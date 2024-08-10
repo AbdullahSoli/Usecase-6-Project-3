@@ -263,5 +263,4 @@ pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
     height=400
 ).interactive()  # أضف التفاعلية
 
-إظهار الباي تشارت
 pie_chart
