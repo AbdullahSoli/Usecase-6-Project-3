@@ -12,7 +12,7 @@ df= pd.read_csv(url)
 
 st.html(
     "<h1>الفلل في الرياض </h1>"
-    "<p>مقدمة</p>"
+    "<p>ااااامقدمة</p>"
 )
 
 # HTML code with autoplay and muted attributes
