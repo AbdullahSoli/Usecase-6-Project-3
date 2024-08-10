@@ -251,3 +251,26 @@ scatter_plot = alt.Chart(df).mark_circle(size=60).encode(
 )
 
 st.altair_chart(scatter_plot, use_container_width=True)
+
+correlation_matrix = df.corr()
+
+# Focus on the correlation with the target column (e.g., 'A')
+target_column = 'price'
+target_correlation = correlation_matrix[[target_column]].reset_index()
+target_correlation.columns = ['Column', 'Correlation']
+
+# Create heatmap using Altair
+heatmap = alt.Chart(target_correlation).mark_rect().encode(
+    x='Column:O',
+    y=alt.value(0),
+    color='Correlation:Q'
+).properties(
+    width=alt.Step(80),  # Width of each bar
+    height=50
+).transform_calculate(
+    Correlation=lambda c: (c - target_correlation['Correlation'].min()) / (target_correlation['Correlation'].max() - target_correlation['Correlation'].min())
+)
+
+# Display heatmap in Streamlit
+st.title('Correlation Heatmap')
+st.altair_chart(heatmap, use_container_width=True)
