@@ -30,29 +30,17 @@ st.html(
     "<h1>السؤال الثاني ؟ </h1>"
     "<p>شرح</p>"
 )
-'''chart = alt.Chart(data).mark_arc().encode(
-    theta=alt.Theta(field='sizes', type='quantitative'),
-    color=alt.Color(field='labels', type='nominal'),
-    tooltip=[alt.Tooltip(field='labels', type='nominal'), alt.Tooltip(field='sizes', type='quantitative')]
-).properties(
-    title='Maid Room and Driver Room'
-)
-
-
-st.altair_chart(chart, use_container_width=True)'''
-df['percent'] = (df['sizes'] / df['sizes'].sum() * 100).round(1).astype(str) + '%'
-
-# Plot pie chart with percentages
 chart = alt.Chart(data).mark_arc().encode(
     theta=alt.Theta(field='sizes', type='quantitative'),
     color=alt.Color(field='labels', type='nominal'),
-    text=alt.Text(field='percent', type='nominal'),  # Add percentage text
     tooltip=[alt.Tooltip(field='labels', type='nominal'), alt.Tooltip(field='sizes', type='quantitative')]
 ).properties(
     title='Maid Room and Driver Room'
-).configure_mark(
-    opacity=0.8
 )
+
+
+st.altair_chart(chart, use_container_width=True)
+
 
 # Display the chart in Streamlit
 st.altair_chart(chart, use_container_width=True)
