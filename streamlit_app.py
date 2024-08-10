@@ -17,14 +17,14 @@ st.html(
 
 # HTML code with autoplay
 video_html = """
-<video controls autoplay>
+<video controls autoplay style="width: 100%;">
   <source src="https://github.com/AbdullahSoli/Usecase-6-Project-3/blob/main/Riyadh%20City%20Skyline.mp4?raw=true" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 """
 
 # Display the video using custom HTML
-components.html(video_html, height=600, width=1200)
+components.html(video_html, height=600)
 
 st.html(
     "<h1>السؤال الاول ؟ </h1>"
