@@ -252,6 +252,9 @@ scatter_plot = alt.Chart(df).mark_circle(size=60).encode(
 
 st.altair_chart(scatter_plot, use_container_width=True)
 
+duplex_counts['percent'] = (duplex_counts['count'] / duplex_counts['count'].sum()) * 100
+
+إنشاء الباي تشارت مع عرض النسبة المئوية
 pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
     theta=alt.Theta(field='count', type='quantitative', title='Count'),
     color=alt.Color(field='duplex', type='nominal', title='Duplex'),
