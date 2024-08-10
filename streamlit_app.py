@@ -139,49 +139,21 @@ pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
     outerRadius=150
 )
 st.altair_chart(pie_chart, use_container_width=True)
-df['duplex'] = df['duplex'].map({0: 'لا', 1: 'نعم'})
-
-# Calculate counts and create a DataFrame for Altair
-duplex_counts = df['duplex'].value_counts().reset_index()
+duplex_counts = df['duplex'].map({0: 'No', 1: 'Yes'}).value_counts().reset_index()
 duplex_counts.columns = ['duplex', 'count']
-
-# Calculate percentages
-duplex_counts['percentage'] = 100 * duplex_counts['count'] / duplex_counts['count'].sum()
-
-# Create the pie chart
 pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
     theta=alt.Theta(field='count', type='quantitative', title='Count'),
     color=alt.Color(field='duplex', type='nominal', title='Duplex'),
-    tooltip=[
-        alt.Tooltip('duplex:N', title='Duplex'),
-        alt.Tooltip('count:Q', title='Count'),
-        alt.Tooltip('percentage:Q', format='.1f', title='Percentage')
-    ]
+    tooltip=['duplex:N', 'count:Q']
 ).properties(
-    title='توزيع القيم حسب نوع الدوبلكس',
+    title='Distribution of Duplex Values',
     width=400,
     height=400
 ).configure_arc(
     outerRadius=150
 )
+st.altair_chart(pie_chart, use_container_width=True)
 
-# Create a text chart for percentages
-text_chart = alt.Chart(duplex_counts).mark_text(
-    radius=200,
-    size=14,
-    color='black',
-    align='center',
-    baseline='middle'
-).encode(
-    theta=alt.Theta(field='count', type='quantitative'),
-    text=alt.Text('percentage:Q', format='.1f')
-)
-
-# Combine the pie chart and text chart
-final_chart = pie_chart + text_chart
-
-# Display the chart using Streamlit
-st.altair_chart(final_chart, use_container_width=True)
 st.html(
     "<h1>السؤال الخامس ؟ </h1>"
     "<p>شرح</p>"
