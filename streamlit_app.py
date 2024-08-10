@@ -179,7 +179,7 @@ duplex_counts = df['duplex'].value_counts().reset_index()
 duplex_counts.columns = ['duplex', 'count']
 duplex_counts['Percent'] = (duplex_counts['count'] / duplex_counts['count'].sum() * 100).round(2).astype(str) + '%'
 
-# Create the arc chart
+# Create the pie chart with arcs
 arc_chart = alt.Chart(duplex_counts).mark_arc().encode(
     theta=alt.Theta(field='count', type='quantitative', title='Count'),
     color=alt.Color(field='duplex', type='nominal', title='Duplex'),
@@ -192,7 +192,7 @@ arc_chart = alt.Chart(duplex_counts).mark_arc().encode(
     outerRadius=150
 )
 
-# Create the text chart for percentages and labels
+# Create text labels for percentages
 text_chart = alt.Chart(duplex_counts).mark_text(
     radius=130,  # Distance from the center where the text appears
     size=14,     # Text size
@@ -202,6 +202,7 @@ text_chart = alt.Chart(duplex_counts).mark_text(
     text=alt.Text(field='Percent', type='nominal')
 )
 
+# Create text labels for 'Yes' and 'No'
 label_chart = alt.Chart(duplex_counts).mark_text(
     radius=100,  # Distance from the center where the labels appear
     size=14,     # Text size
@@ -211,13 +212,11 @@ label_chart = alt.Chart(duplex_counts).mark_text(
     text=alt.Text(field='duplex', type='nominal')
 )
 
-# Combine the charts
-pie_chart = arc_chart + text_chart + label_chart
+# Combine the charts using alt.layer()
+pie_chart = alt.layer(arc_chart, text_chart, label_chart)
 
 # Display the chart
 st.altair_chart(pie_chart, use_container_width=True)
-
-
 
 st.html(
     "<h1>السؤال الخامس ؟ </h1>"
