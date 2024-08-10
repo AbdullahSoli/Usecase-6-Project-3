@@ -15,16 +15,16 @@ st.html(
     "<p>مقدمة</p>"
 )
 
-# HTML code with autoplay
+# HTML code with autoplay and muted attributes
 video_html = """
-<video controls autoplay style="width: 100%;">
+<video controls autoplay muted style="width: 100%;">
   <source src="https://github.com/AbdullahSoli/Usecase-6-Project-3/blob/main/Riyadh%20City%20Skyline.mp4?raw=true" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 """
 
-# Display the video using custom HTML
-components.html(video_html, height=600)
+# Display the video using custom HTML with a smaller height
+components.html(video_html, height=400)
 
 st.html(
     "<h1>السؤال الاول ؟ </h1>"
