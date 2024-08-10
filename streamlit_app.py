@@ -127,7 +127,7 @@ st.html(
 #     labelAngle=45  # Rotate x-axis labels for better readability
 # )
 # st.altair_chart(chart, use_container_width=True)
-
+"<br>"
 
 avg_price_5_rooms = df[df['rooms'] == 5].groupby('location')['price'].mean().reset_index()
 avg_price_5_rooms.columns = ['location', 'average_price']
