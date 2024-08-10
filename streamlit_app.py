@@ -52,9 +52,9 @@ arc_chart = alt.Chart(data).mark_arc().encode(
 
 # إنشاء النصوص (النسب المئوية) داخل الفطائر
 text_chart = alt.Chart(data).mark_text(
-    radius=90,  # رفع النصوص بعيداً عن المركز
+    radius=100,  # رفع النصوص بعيداً عن المركز
     size=14,    # حجم النص
-    dy=-15       # رفع النصوص قليلاً عن الموضع الافتراضي
+    dy=-30       # رفع النصوص فوق الفطيرة
 ).encode(
     theta=alt.Theta(field='Sizes', type='quantitative'),
     text=alt.Text(field='Percent', type='nominal')
@@ -62,9 +62,9 @@ text_chart = alt.Chart(data).mark_text(
 
 # إنشاء النصوص (الأسماء) داخل الفطائر
 label_chart = alt.Chart(data).mark_text(
-    radius=70,  # رفع الأسماء بعيداً عن المركز
+    radius=85,  # رفع الأسماء بعيداً عن المركز
     size=12,    # حجم النص
-    dy=15,      # رفع الأسماء قليلاً
+    dy=30,      # رفع الأسماء فوق الفطيرة
     color='black'  # لون النص
 ).encode(
     theta=alt.Theta(field='Sizes', type='quantitative'),
