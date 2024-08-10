@@ -235,7 +235,7 @@ try:
 
     # Create a DataFrame for Altair with new column names
     price_data = pd.DataFrame({
-        'عمر الملكية': ['أقل من 10', 'أكثر من 20'],
+        'عمر الملكية': ['أقل من 10', 'أكبر من 20'],
         'متوسط السعر': [price_lt_10, price_gt_20]
     })
     
