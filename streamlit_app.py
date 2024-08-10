@@ -35,6 +35,10 @@ st.html(
     "<h1>السؤال الثاني ؟ </h1>"
     "<p>شرح</p>"
 )
+data = pd.DataFrame({
+    'Labels': ['Maid Room', 'Driver Room'],
+    'Sizes': [100, 50]  # Replace these values with df2['maidRoom'].sum() and df2['driverRoom'].sum()
+})
 chart = alt.Chart(data).mark_arc().encode(
     theta=alt.Theta(field='sizes', type='quantitative'),
     color=alt.Color(field='labels', type='nominal'),
