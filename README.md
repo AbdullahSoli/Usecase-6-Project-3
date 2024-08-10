@@ -5,3 +5,16 @@
 - Notebook file(.ipynb).
 - Streamlit file (.py)
 - README.md file (.md).
+
+# Team Members
+* Abduallah
+* Ziyad
+* Mousa
+* Ahmad
+
+# Introduction
+## Problem Statement
+The real estate market in Riyadh is growing rapidly, and with this growth comes a lot of data that needs to be understood. There's a need to figure out what’s driving property prices, how demand is changing, and what trends are emerging. However, the sheer volume of data can make it hard to see the bigger picture and make informed decisions.
+
+## Objectives
+The goal of this project is to analyze Riyadh's real estate data using advanced tools to make sense of it all. We want to answer important questions like what factors affect property prices and what trends are shaping the market. Through careful data analysis and visualization, we aim to uncover insights that will help investors, developers, and policymakers make better decisions. In the end, we'll create an easy-to-understand report that clearly presents our findings in a story-telling format.
