@@ -44,22 +44,22 @@ data = pd.DataFrame({
 data['Percent'] = (data['Sizes'] / data['Sizes'].sum() * 100).round(2).astype(str) + '%'
 
 # إنشاء الرسم البياني
-chart = alt.Chart(data).mark_arc().encode(
+arc_chart = alt.Chart(data).mark_arc().encode(
     theta=alt.Theta(field='Sizes', type='quantitative'),
     color=alt.Color(field='Labels', type='nominal'),
-    text=alt.Text(field='Percent', type='nominal'),
     tooltip=[alt.Tooltip(field='Labels', type='nominal'), alt.Tooltip(field='Sizes', type='quantitative'), alt.Tooltip(field='Percent', type='nominal')]
-).properties(
-    title='Maid Room and Driver Room'
-).mark_arc().encode(
-    theta=alt.Theta(field='Sizes', type='quantitative'),
-    color=alt.Color(field='Labels', type='nominal'),
-    text=alt.Text(field='Percent', type='nominal')  # إضافة النصوص (النسب المئوية)
 )
+
+text_chart = alt.Chart(data).mark_text(radius=80, size=14).encode(
+    theta=alt.Theta(field='Sizes', type='quantitative'),
+    text=alt.Text(field='Percent', type='nominal')
+)
+
+# دمج الرسم البيانيين
+chart = arc_chart + text_chart
 
 # عرض الرسم البياني
 st.altair_chart(chart, use_container_width=True)
-
 
 
 
