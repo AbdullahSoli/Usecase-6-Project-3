@@ -103,6 +103,8 @@ bar_chart = alt.Chart(avg_price_5_rooms).mark_bar().encode(
     title='Average Price for 5 Room Objects by Location',
     width=800,
     height=400
+).configure_axis(
+    labelAngle=45  # Rotate x-axis labels for better readability
 )
 st.altair_chart(bar_chart, use_container_width=True)
 
@@ -117,6 +119,8 @@ bar_chart = alt.Chart(avg_price_4_rooms).mark_bar().encode(
     title='Average Price for 4 Room Objects by Location',
     width=800,
     height=400
+).configure_axis(
+    labelAngle=45  # Rotate x-axis labels for better readability
 )
 st.altair_chart(bar_chart, use_container_width=True)
 
@@ -142,61 +146,7 @@ pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
 st.altair_chart(pie_chart, use_container_width=True)
 
 
-# حساب التكرارات
-duplex_counts = df['duplex'].map({0: 'No', 1: 'Yes'}).value_counts().reset_index()
-duplex_counts.columns = ['duplex', 'count']
 
-# حساب النسب المئوية
-duplex_counts['percentage'] = 100 * duplex_counts['count'] / duplex_counts['count'].sum()
-pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
-    theta=alt.Theta(field='count', type='quantitative', title='Count'),
-    color=alt.Color(field='duplex', type='nominal', title='Duplex'),
-    tooltip=[alt.Tooltip(field='duplex', type='nominal', title='Duplex'),
-             alt.Tooltip(field='count', type='quantitative', title='Count'),
-             alt.Tooltip(field='percentage', type='quantitative', title='Percentage', format='.1f')]
-).properties(
-    title='Distribution of Duplex Values',
-    width=400,
-    height=400
-).configure_arc(
-    outerRadius=150
-)
-
-st.altair_chart(pie_chart, use_container_width=True)
-
-duplex_counts = df['duplex'].map({0: 'No', 1: 'Yes'}).value_counts().reset_index()
-duplex_counts.columns = ['duplex', 'count']
-
-# حساب النسب المئوية
-duplex_counts['percentage'] = 100 * duplex_counts['count'] / duplex_counts['count'].sum()
-import altair as alt
-import pandas as pd
-
-# الرسم البياني الدائري
-pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
-    theta=alt.Theta(field='count', type='quantitative', title='Count'),
-    color=alt.Color(field='duplex', type='nominal', title='Duplex'),
-    tooltip=[alt.Tooltip(field='duplex', type='nominal', title='Duplex'),
-             alt.Tooltip(field='count', type='quantitative', title='Count'),
-             alt.Tooltip(field='percentage', type='quantitative', title='Percentage', format='.1f')]
-).properties(
-    title='Distribution of Duplex Values',
-    width=400,
-    height=400
-).configure_arc(
-    outerRadius=150
-)
-
-# النصوص للنسب المئوية
-text = alt.Chart(duplex_counts).mark_text(radius=160, size=14, align='center').encode(
-    theta=alt.Theta(field='count', type='quantitative'),
-    text=alt.Text(field='percentage', type='quantitative', format='.1f')
-)
-
-# دمج الرسم البياني والنصوص
-final_chart = alt.layer(pie_chart, text)
-
-st.altair_chart(final_chart, use_container_width=True)
 
 st.html(
     "<h1>السؤال الخامس ؟ </h1>"
