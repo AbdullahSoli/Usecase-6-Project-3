@@ -64,10 +64,7 @@ data = pd.DataFrame({
     'Sizes': [100, 50]
 })
 
-st.html(
-  
-    "<p> نلاحظ في الرسم الدائرة الاعلى ان الناس لا يهتمون بشكل كبير في السائق بل العكس يهتمون في الخادمة ، وبعد طرح الأسئلة على  الناس لماذا يفضلون الخادمة على السائق ، و وجدتهم يقولون ان مهام السائق ممكن يقوم بعملها الاب و الابن و الأخ و الزوج فلا داعي ان يكون هناك سائق بعكس الخادمة .  </p>"
-)
+
 
 data['Percent'] = (data['Sizes'] / data['Sizes'].sum() * 100).round(2).astype(str) + '%'
 
@@ -76,6 +73,13 @@ arc_chart = alt.Chart(data).mark_arc().encode(
     color=alt.Color(field='Labels', type='nominal'),
     tooltip=[alt.Tooltip(field='Labels', type='nominal'), alt.Tooltip(field='Sizes', type='quantitative'), alt.Tooltip(field='Percent', type='nominal')]
 )
+
+
+st.html(
+  
+    "<p> نلاحظ في الرسم الدائرة الاعلى ان الناس لا يهتمون بشكل كبير في السائق بل العكس يهتمون في الخادمة ، وبعد طرح الأسئلة على  الناس لماذا يفضلون الخادمة على السائق ، و وجدتهم يقولون ان مهام السائق ممكن يقوم بعملها الاب و الابن و الأخ و الزوج فلا داعي ان يكون هناك سائق بعكس الخادمة .  </p>"
+)
+
 
 text_chart = alt.Chart(data).mark_text(
     radius=100,  
