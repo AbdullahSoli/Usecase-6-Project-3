@@ -5,7 +5,7 @@ import numpy as np
 import altair as alt
 #import plotly.figure_factory as ff
 #import matplotlib.pyplot as plt
-url ='https://raw.githubusercontent.com/AbdullahSoli/Project-3-streamlit/main/cleaned_RiyadhVillasAqar2.csv'
+url ='https://raw.githubusercontent.com/AbdullahSoli/Usecase-6-Project-3/main/cleaned_RiyadhVillasAqar2.csv'
 #df= pd.read_csv('cleaned_RiyadhVillasAqar.csv')
 df= pd.read_csv(url)
 
@@ -144,7 +144,7 @@ st.html(
     "<h1>السؤال الرابع ؟ </h1>"
     "<p>شرح</p>"
 )
-'''duplex_counts = df['duplex'].value_counts().reset_index()
+duplex_counts = df['duplex'].value_counts().reset_index()
 duplex_counts.columns = ['duplex', 'count']
 pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
     theta=alt.Theta(field='count', type='quantitative', title='Count'),
@@ -157,8 +157,8 @@ pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
 ).configure_arc(
     outerRadius=150
 )
-st.altair_chart(pie_chart, use_container_width=True)'''
-df['duplex'] = df['duplex'].replace({0: 'No', 1: 'Yes'})
+st.altair_chart(pie_chart, use_container_width=True)
+'''df['duplex'] = df['duplex'].replace({0: 'No', 1: 'Yes'})
 
 # حساب التوزيع وإعادة تسميته
 duplex_counts = df['duplex'].value_counts().reset_index()
@@ -194,7 +194,7 @@ text_chart = alt.Chart(duplex_counts).mark_text(
 pie_chart = arc_chart + text_chart
 
 # عرض الرسم البياني
-st.altair_chart(pie_chart, use_container_width=True)
+st.altair_chart(pie_chart, use_container_width=True)'''
 
 
 st.html(
