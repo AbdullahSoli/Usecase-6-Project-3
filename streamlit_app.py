@@ -262,7 +262,7 @@ try:
     ).properties(
         title='مقارنة بين أسعار البيوت بحسب العمر',
         width=500,
-        height=300
+        height=500
     ).configure_axis(
     labelAngle=45  # Rotate x-axis labels for better readability
 )
