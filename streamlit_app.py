@@ -167,7 +167,7 @@ try:
     bar_chart = alt.Chart(price_data).mark_bar().encode(
         x=alt.X('Property Age:N', title='Property Age'),
         y=alt.Y('Mean Price:Q', title='Mean Price'),
-        color=alt.Color('Property Age:N', scale=alt.Scale(domain=['10< ', '> 20'], range=['#4863A0', '#646D7E'])),
+        color=alt.Color('Property Age:N', scale=alt.Scale(domain=['<10 ', '> 20'], range=['#4863A0', '#646D7E'])),
         tooltip=[alt.Tooltip('Property Age:N', title='Property Age'), alt.Tooltip('Mean Price:Q', title='Mean Price')]
     ).properties(
         title='مقارنة بين اسعار البيوت بحسب العمر ',
