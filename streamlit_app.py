@@ -257,10 +257,10 @@ try:
     bar_chart = alt.Chart(price_data).mark_bar().encode(
         x=alt.X('عمر الملكية:N', title='Property Age'),
         y=alt.Y('متوسط السعر:Q', title='Average price'),
-        color=alt.Color('عمر الملكية:N', scale=alt.Scale(domain=['أقل من 10 سنوات', 'أكبر من 20 سنة'], range=['#4863A0', '#646D7E'])),
-        tooltip=[alt.Tooltip('hعمر الملكية:N', title='Property Age Years'), alt.Tooltip('متوسط السعر:Q', title='متوسط السعر')]
+        color=alt.Color('Property age year:N', scale=alt.Scale(domain=['أقل من 10 سنوات', 'أكبر من 20 سنة'], range=['#4863A0', '#646D7E'])),
+        tooltip=[alt.Tooltip('عمر الملكية:N', title='Property Age Years'), alt.Tooltip('متوسط السعر:Q', title='متوسط السعر')]
     ).properties(
-        title='مقارنة بين أسعار البيوت بحسب العمر',
+        title='مقارنة بين أسعار الفلل بحسب العمر',
         width=500,
         height=500
     ).configure_axis(
