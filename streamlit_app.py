@@ -114,19 +114,19 @@ st.html(
     "<h1>السؤال الثالث ؟ </h1>"
     "<p>شرح</p>"
 )
-avg_price_rooms = df.groupby('location')['price'].mean().reset_index()
+# avg_price_rooms = df.groupby('location')['price'].mean().reset_index()
 
-# Create the Altair bar chart
-chart = alt.Chart(avg_price_rooms).mark_bar().encode(
-    x=alt.X('location:N', title='Location'),
-    y=alt.Y('price:Q', title='Average Price'),
-    tooltip=['location:N', 'price:Q']
-).properties(
-    title='Average Price  by Location'
-).configure_axis(
-    labelAngle=45  # Rotate x-axis labels for better readability
-)
-st.altair_chart(chart, use_container_width=True)
+# # Create the Altair bar chart
+# chart = alt.Chart(avg_price_rooms).mark_bar().encode(
+#     x=alt.X('location:N', title='Location'),
+#     y=alt.Y('price:Q', title='Average Price'),
+#     tooltip=['location:N', 'price:Q']
+# ).properties(
+#     title='Average Price  by Location'
+# ).configure_axis(
+#     labelAngle=45  # Rotate x-axis labels for better readability
+# )
+# st.altair_chart(chart, use_container_width=True)
 
 
 avg_price_5_rooms = df[df['rooms'] == 5].groupby('location')['price'].mean().reset_index()
