@@ -124,7 +124,7 @@ st.html(
     "<h1>السؤال الرابع ؟ </h1>"
     "<p>شرح</p>"
 )
-duplex_counts = df['duplex'].value_counts().reset_index()
+'''duplex_counts = df['duplex'].value_counts().reset_index()
 duplex_counts.columns = ['duplex', 'count']
 pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
     theta=alt.Theta(field='count', type='quantitative', title='Count'),
@@ -137,6 +137,31 @@ pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
 ).configure_arc(
     outerRadius=150
 )
+st.altair_chart(pie_chart, use_container_width=True)'''
+df['duplex'] = df['duplex'].replace({0: 'No', 1: 'Yes'})
+
+# حساب التوزيع وإعادة تسميته
+duplex_counts = df['duplex'].value_counts().reset_index()
+duplex_counts.columns = ['duplex', 'count']
+
+# حساب النسب المئوية
+duplex_counts['Percent'] = (duplex_counts['count'] / duplex_counts['count'].sum() * 100).round(2).astype(str) + '%'
+
+# إنشاء الرسم البياني
+pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
+    theta=alt.Theta(field='count', type='quantitative', title='Count'),
+    color=alt.Color(field='duplex', type='nominal', title='Duplex'),
+    tooltip=[alt.Tooltip(field='duplex', type='nominal'), alt.Tooltip(field='count', type='quantitative'), alt.Tooltip(field='Percent', type='nominal')],
+    text=alt.Text(field='Percent', type='nominal')  # إضافة النسب المئوية كنصوص
+).properties(
+    title='Distribution of Duplex Values',
+    width=400,
+    height=400
+).configure_arc(
+    outerRadius=150
+)
+
+# عرض الرسم البياني
 st.altair_chart(pie_chart, use_container_width=True)
 
 
