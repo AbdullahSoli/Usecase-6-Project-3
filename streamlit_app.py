@@ -7,7 +7,7 @@ import altair as alt
 url ='https://raw.githubusercontent.com/AbdullahSoli/Project-3-streamlit/main/cleaned_RiyadhVillasAqar2.csv'
 #df= pd.read_csv('cleaned_RiyadhVillasAqar.csv')
 df= pd.read_csv(url)
-st.write('Hello world!')
+
 
 st.html(
     "<h1>الفلل في الرياض </h1>"
