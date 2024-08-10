@@ -147,12 +147,11 @@ duplex_counts.columns = ['duplex', 'count']
 # حساب النسب المئوية
 duplex_counts['Percent'] = (duplex_counts['count'] / duplex_counts['count'].sum() * 100).round(2).astype(str) + '%'
 
-# إنشاء الرسم البياني
-pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
+# إنشاء الرسم البياني للشرائح
+arc_chart = alt.Chart(duplex_counts).mark_arc().encode(
     theta=alt.Theta(field='count', type='quantitative', title='Count'),
     color=alt.Color(field='duplex', type='nominal', title='Duplex'),
-    tooltip=[alt.Tooltip(field='duplex', type='nominal'), alt.Tooltip(field='count', type='quantitative'), alt.Tooltip(field='Percent', type='nominal')],
-    text=alt.Text(field='Percent', type='nominal')  # إضافة النسب المئوية كنصوص
+    tooltip=[alt.Tooltip(field='duplex', type='nominal'), alt.Tooltip(field='count', type='quantitative'), alt.Tooltip(field='Percent', type='nominal')]
 ).properties(
     title='Distribution of Duplex Values',
     width=400,
@@ -160,6 +159,19 @@ pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
 ).configure_arc(
     outerRadius=150
 )
+
+# إضافة النسب المئوية داخل الشرائح
+text_chart = alt.Chart(duplex_counts).mark_text(
+    radius=120,  # يحدد المسافة من المركز حيث يظهر النص
+    size=14,     # حجم النص
+    color='white'  # لون النص لجعله بارزاً داخل الفطائر
+).encode(
+    theta=alt.Theta(field='count', type='quantitative'),
+    text=alt.Text(field='Percent', type='nominal')
+)
+
+# دمج الرسم البيانيين
+pie_chart = arc_chart + text_chart
 
 # عرض الرسم البياني
 st.altair_chart(pie_chart, use_container_width=True)
