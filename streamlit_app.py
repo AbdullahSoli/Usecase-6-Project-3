@@ -46,8 +46,6 @@ chart = alt.Chart(data).mark_arc().encode(
 ).properties(
     title='Maid Room and Driver Room'
 )
-
-
 st.altair_chart(chart, use_container_width=True)
 
 
