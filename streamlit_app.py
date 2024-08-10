@@ -46,7 +46,7 @@ scatter_plot = alt.Chart(df).mark_circle(size=60).encode(
 st.altair_chart(scatter_plot, use_container_width=True)
 
 # Example scatter plot: relationship between property age and price
-scatter_plot = alt.Chart(df).mark_circle(size=60).encode(
+scatter_plot1 = alt.Chart(df).mark_circle(size=60).encode(
     x=alt.X('propertyAge:Q', title='Property Age'),
     y=alt.Y('price:Q', title='Price'),
     color='location:N',
@@ -57,7 +57,7 @@ scatter_plot = alt.Chart(df).mark_circle(size=60).encode(
     height=400
 )
 
-st.altair_chart(scatter_plot, use_container_width=True)
+st.altair_chart(scatter_plot1, use_container_width=True)
 
 
 st.html(
