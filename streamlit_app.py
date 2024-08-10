@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 import pandas as pd
 import numpy as np
 import altair as alt
@@ -14,11 +15,16 @@ st.html(
     "<p>مقدمة</p>"
 )
 
-# Video URL
-video_url = "https://github.com/AbdullahSoli/Usecase-6-Project-3/blob/main/Riyadh%20City%20Skyline.mp4?raw=true"
+# HTML code with autoplay
+video_html = """
+<video controls autoplay>
+  <source src="https://github.com/AbdullahSoli/Usecase-6-Project-3/blob/main/Riyadh%20City%20Skyline.mp4?raw=true" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+"""
 
-# Display the video in Streamlit
-st.video(video_url)
+# Display the video using custom HTML
+components.html(video_html, height=600)
 
 st.html(
     "<h1>السؤال الاول ؟ </h1>"
