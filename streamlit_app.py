@@ -257,18 +257,6 @@ try:
     # Display the chart using Streamlit
     st.altair_chart(bar_chart, use_container_width=True)
 
-scatter_plot = alt.Chart(df).mark_circle(size=60).encode(
-    x=alt.X('propertyAge:Q', title='Property Age'),
-    y=alt.Y('price:Q', title='Price'),
-    color='location:N',
-    tooltip=['location:N', 'propertyAge:Q', 'price:Q']
-).properties(
-    title='Scatter Plot of Property Age vs. Price',
-    width=800,
-    height=400
-)
-
-st.altair_chart(scatter_plot, use_container_width=True)
 
 
 except Exception as e:
