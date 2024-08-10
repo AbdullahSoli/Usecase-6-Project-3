@@ -60,7 +60,7 @@ text_chart = alt.Chart(data).mark_text(
 label_chart = alt.Chart(data).mark_text(
     radius=100,  
     size=12,    
-    dy=10,      
+    dy=-10,      
     color='black'  
 ).encode(
     theta=alt.Theta(field='Sizes', type='quantitative'),
