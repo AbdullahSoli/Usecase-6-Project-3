@@ -17,7 +17,7 @@ st.html(
 
 # HTML code with autoplay and muted attributes
 video_html = """
-<video controls autoplay muted loop style="width: 100%;">
+<video autoplay muted loop style="width: 100%;">
   <source src="https://github.com/AbdullahSoli/Usecase-6-Project-3/blob/main/Riyadh%20City%20Skyline.mp4?raw=true" type="video/mp4">
   Your browser does not support the video tag.
 </video>
