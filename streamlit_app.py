@@ -262,6 +262,20 @@ try:
 except Exception as e:
     st.error(f"An error occurred: {e}")
 
+scatter_plot = alt.Chart(df).mark_circle(size=60).encode(
+    x=alt.X('propertyAge:Q', title='Property Age'),
+    y=alt.Y('price:Q', title='Price'),
+    color='location:N',
+    tooltip=['location:N', 'propertyAge:Q', 'price:Q']
+).properties(
+    title='Scatter Plot of Property Age vs. Price',
+    width=800,
+    height=400
+)
+
+st.altair_chart(scatter_plot, use_container_width=True)
+
+
 
 st.html(
     "<h1>السؤال السادس ؟ </h1>"
