@@ -1,7 +1,5 @@
 # Usecase-6-Project-3
 
----
-
 # Team Members
 * Abduallah
 * Ziyad
