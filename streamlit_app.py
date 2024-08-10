@@ -344,7 +344,7 @@ bar_chart = alt.Chart(top_10_locations).mark_bar().encode(
     color='location:N',
     tooltip=['location:N', 'count:Q']  
 ).properties(
-    title='توزيع الفلل حيب المناطق',
+    title='توزيع الفلل حسب المناطق',
     width=500,
     height=420
 )
