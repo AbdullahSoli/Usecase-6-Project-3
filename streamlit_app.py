@@ -24,7 +24,7 @@ video_html = """
 """
 
 # Display the video using custom HTML
-components.html(video_html)
+components.html(video_html, height=400)
 
 st.html(
     "<h1>السؤال الاول ؟ </h1>"
