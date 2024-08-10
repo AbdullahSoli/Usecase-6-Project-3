@@ -14,7 +14,7 @@ st.html(
     "<p>مقدمة</p>"
 )
 
-st.image("riyadh2.jpg", caption="Riyadh",width=1000)
+st.image("Riyadh City Skyline.mp4", caption="Riyadh",width=1000)
 
 
 st.html(
