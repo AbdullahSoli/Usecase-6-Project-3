@@ -211,35 +211,39 @@ pie_chart = alt.Chart(df_counts).mark_arc().encode(
 
 # عرض الرسم البياني في Streamlit
 st.altair_chart(pie_chart, use_container_width=True)'''
-property_age_lt_10 = df2[(df2['propertyAge'] < 10) & (df2['space'] <= 500)]
-property_age_gt_20 = df2[(df2['propertyAge'] > 20) & (df2['space'] <= 500)]
 
-# Get the mean price for each group
-price_lt_10 = property_age_lt_10['price'].mean()
-price_gt_20 = property_age_gt_20['price'].mean()
+try:
+    # Filter the data based on propertyAge and space
+    property_age_lt_10 = df2[(df2['propertyAge'] < 10) & (df2['space'] <= 500)]
+    property_age_gt_20 = df2[(df2['propertyAge'] > 20) & (df2['space'] <= 500)]
 
-# Create a DataFrame for Altair
-price_data = pd.DataFrame({
-    'Property Age': ['< 10', '> 20'],
-    'Mean Price': [price_lt_10, price_gt_20]
-})
+    # Get the mean price for each group
+    price_lt_10 = property_age_lt_10['price'].mean()
+    price_gt_20 = property_age_gt_20['price'].mean()
 
-# Create the Altair bar chart
-bar_chart = alt.Chart(price_data).mark_bar().encode(
-    x=alt.X('Property Age:N', title='Property Age'),
-    y=alt.Y('Mean Price:Q', title='Mean Price'),
-    color=alt.Color('Property Age:N', scale=alt.Scale(domain=['< 10', '> 20'], range=['#1f77b4', '#ff7f0e'])),
-    tooltip=[alt.Tooltip('Property Age:N', title='Property Age'), alt.Tooltip('Mean Price:Q', title='Mean Price')]
-).properties(
-    title='Comparison of Property Prices for Properties with Space <= 500',
-    width=500,
-    height=300
-)
+    # Create a DataFrame for Altair
+    price_data = pd.DataFrame({
+        'Property Age': ['< 10', '> 20'],
+        'Mean Price': [price_lt_10, price_gt_20]
+    })
 
-# Display the chart using Streamlit
-st.altair_chart(bar_chart, use_container_width=True)
+    # Create the Altair bar chart
+    bar_chart = alt.Chart(price_data).mark_bar().encode(
+        x=alt.X('Property Age:N', title='Property Age'),
+        y=alt.Y('Mean Price:Q', title='Mean Price'),
+        color=alt.Color('Property Age:N', scale=alt.Scale(domain=['< 10', '> 20'], range=['#1f77b4', '#ff7f0e'])),
+        tooltip=[alt.Tooltip('Property Age:N', title='Property Age'), alt.Tooltip('Mean Price:Q', title='Mean Price')]
+    ).properties(
+        title='Comparison of Property Prices for Properties with Space <= 500',
+        width=500,
+        height=300
+    )
 
+    # Display the chart using Streamlit
+    st.altair_chart(bar_chart, use_container_width=True)
 
+except Exception as e:
+    st.error(f"An error occurred: {e}")
 
 
 st.html(
