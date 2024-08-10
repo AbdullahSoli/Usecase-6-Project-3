@@ -108,5 +108,55 @@ This suggests that newer houses tend to be more expensive, while older houses ar
 
 ---
 
+![image](https://github.com/user-attachments/assets/f584216e-ba05-4ddf-a3cb-9dfd21acb11f)
+
+The box plot shows the distribution of property prices by space (area). 
+
+- The chart reveals a wide range of prices with many outliers, especially in larger spaces.
+
+This suggests that while most properties are moderately priced, larger properties can vary widely in price, with some reaching very high values.
+
+---
+
+![image](https://github.com/user-attachments/assets/15323ae8-06fd-4a57-961b-6abd25f2d9cb)
+
+The donut chart illustrates the distribution of homes across different regions in Riyadh:
+
+- **North Riyadh** and **West Riyadh** have the largest share of homes, indicated by the larger segments in red and light red.
+- **South Riyadh** and **East Riyadh** also represent significant portions of the market, shown in blue and light blue.
+- **Central Riyadh** has the smallest share of homes, as indicated by the small green segment.
+
+This suggests that most homes in Riyadh are concentrated in the northern and western regions, with fewer homes available in the central part of the city.
+
+---
+
+![image](https://github.com/user-attachments/assets/8c1ee1cc-9272-413d-8581-e64e7fce983d)
+
+The bar chart shows the distribution of homes across different regions in Riyadh by count:
+
+- **West Riyadh** has the highest number of homes, followed by **East Riyadh**.
+- **North Riyadh** and **South Riyadh** also have a significant number of homes, though less than the west and east.
+- **Central Riyadh** has the fewest homes, with a very small count compared to other regions.
+
+This indicates that West and East Riyadh are the most populated in terms of housing, while Central Riyadh has the least housing availability.
+
+---
+
+![image](https://github.com/user-attachments/assets/ab9d3650-9be0-4c2c-941e-26d056af54da)
+
+### Insight from the Chart
+
+The scatter plot shows the relationship between property age and price across different locations in Riyadh:
+
+- There is a wide range of prices for properties of all ages, with no clear trend of prices increasing or decreasing significantly with age.
+- **North Riyadh** (red dots) shows a consistent presence across all age ranges with prices generally on the higher side.
+- **West Riyadh** (light red) also appears frequently across all property ages, with prices similar to those in North Riyadh.
+- **South Riyadh** and **East Riyadh** (blue shades) have properties mostly in the lower price range.
+
+This suggests that property prices in Riyadh are influenced more by location than by the age of the property, with North and West Riyadh being more expensive regardless of property age.
+
+
+
+
 
 
