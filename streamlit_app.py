@@ -172,6 +172,7 @@ pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
     outerRadius=150
 )
 st.altair_chart(pie_chart, use_container_width=True)'''
+# Convert values
 df['duplex'] = df['duplex'].replace({0: 'No', 1: 'Yes'})
 
 # Calculate counts and percentages
@@ -212,8 +213,12 @@ label_chart = alt.Chart(duplex_counts).mark_text(
     text=alt.Text(field='duplex', type='nominal')
 )
 
-# Combine the charts using alt.layer()
-pie_chart = alt.layer(arc_chart, text_chart, label_chart)
+# Combine the charts using alt.layer() with data explicitly set
+pie_chart = alt.layer(
+    arc_chart,
+    text_chart.encode(text=alt.Text(field='Percent', type='nominal')),  # Explicitly set encoding for text_chart
+    label_chart.encode(text=alt.Text(field='duplex', type='nominal'))   # Explicitly set encoding for label_chart
+)
 
 # Display the chart
 st.altair_chart(pie_chart, use_container_width=True)
