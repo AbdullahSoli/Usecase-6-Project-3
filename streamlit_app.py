@@ -169,9 +169,10 @@ duplex_counts.columns = ['duplex', 'count']
 
 # حساب النسب المئوية
 duplex_counts['percentage'] = 100 * duplex_counts['count'] / duplex_counts['count'].sum()
-
 import altair as alt
+import pandas as pd
 
+# الرسم البياني الدائري
 pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
     theta=alt.Theta(field='count', type='quantitative', title='Count'),
     color=alt.Color(field='duplex', type='nominal', title='Duplex'),
@@ -186,15 +187,16 @@ pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
     outerRadius=150
 )
 
-text = alt.Chart(duplex_counts).mark_text(radius=180, size=14).encode(
+# النصوص للنسب المئوية
+text = alt.Chart(duplex_counts).mark_text(radius=160, size=14, align='center').encode(
     theta=alt.Theta(field='count', type='quantitative'),
     text=alt.Text(field='percentage', type='quantitative', format='.1f')
 )
 
-final_chart = pie_chart + text
+# دمج الرسم البياني والنصوص
+final_chart = alt.layer(pie_chart, text)
 
 st.altair_chart(final_chart, use_container_width=True)
-
 
 st.html(
     "<h1>السؤال الخامس ؟ </h1>"
