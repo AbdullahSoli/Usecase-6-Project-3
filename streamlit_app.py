@@ -141,6 +141,29 @@ pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
 )
 st.altair_chart(pie_chart, use_container_width=True)
 
+
+# حساب التكرارات
+duplex_counts = df['duplex'].map({0: 'No', 1: 'Yes'}).value_counts().reset_index()
+duplex_counts.columns = ['duplex', 'count']
+
+# حساب النسب المئوية
+duplex_counts['percentage'] = 100 * duplex_counts['count'] / duplex_counts['count'].sum()
+pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
+    theta=alt.Theta(field='count', type='quantitative', title='Count'),
+    color=alt.Color(field='duplex', type='nominal', title='Duplex'),
+    tooltip=[alt.Tooltip(field='duplex', type='nominal', title='Duplex'),
+             alt.Tooltip(field='count', type='quantitative', title='Count'),
+             alt.Tooltip(field='percentage', type='quantitative', title='Percentage', format='.1f')]
+).properties(
+    title='Distribution of Duplex Values',
+    width=400,
+    height=400
+).configure_arc(
+    outerRadius=150
+)
+
+st.altair_chart(pie_chart, use_container_width=True)
+
 st.html(
     "<h1>السؤال الخامس ؟ </h1>"
     "<p>شرح</p>"
