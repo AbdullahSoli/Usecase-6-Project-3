@@ -347,6 +347,8 @@ bar_chart = alt.Chart(top_10_locations).mark_bar().encode(
     title='توزيع الفلل حسب المناطق',
     width=500,
     height=420
+).configure_axis(
+    labelAngle=45  # Rotate x-axis labels for better readability
 )
 
 
