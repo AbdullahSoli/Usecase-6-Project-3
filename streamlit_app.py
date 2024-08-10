@@ -157,20 +157,20 @@ try:
     price_lt_10 = property_age_lt_10['price'].mean()
     price_gt_20 = property_age_gt_20['price'].mean()
 
-    # Create a DataFrame for Altair
+    # Create a DataFrame for Altair with new column names
     price_data = pd.DataFrame({
-        'Property Age': ['< 10', '> 20'],
-        'Mean Price': [price_lt_10, price_gt_20]
+        'عمر الملكية': ['أقل من 10', 'أكثر من 20'],
+        'متوسط السعر': [price_lt_10, price_gt_20]
     })
 
     # Create the Altair bar chart
     bar_chart = alt.Chart(price_data).mark_bar().encode(
-        x=alt.X('Property Age:N', title='Property Age'),
-        y=alt.Y('Mean Price:Q', title='Mean Price'),
-        color=alt.Color('Property Age:N', scale=alt.Scale(domain=['<10 ', '> 20'], range=['#4863A0', '#646D7E'])),
-        tooltip=[alt.Tooltip('Property Age:N', title='Property Age'), alt.Tooltip('Mean Price:Q', title='Mean Price')]
+        x=alt.X('عمر الملكية:N', title='عمر الملكية'),
+        y=alt.Y('متوسط السعر:Q', title='متوسط السعر'),
+        color=alt.Color('عمر الملكية:N', scale=alt.Scale(domain=['أقل من 10', 'أكثر من 20'], range=['#4863A0', '#646D7E'])),
+        tooltip=[alt.Tooltip('عمر الملكية:N', title='عمر الملكية'), alt.Tooltip('متوسط السعر:Q', title='متوسط السعر')]
     ).properties(
-        title='مقارنة بين اسعار البيوت بحسب العمر ',
+        title='مقارنة بين أسعار البيوت بحسب العمر',
         width=500,
         height=300
     )
