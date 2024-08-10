@@ -30,16 +30,12 @@ st.html(
     "<h1>السؤال الاول ؟ </h1>"
     "<p>شرح</p>"
 )
-data = pd.DataFrame({
-    'labels': ['Maid Room', 'Driver Room'],
-    'sizes': [df['maidRoom'].sum(), df['driverRoom'].sum()]
-})
 
 st.html(
     "<h1>السؤال الثاني ؟ </h1>"
     "<p>شرح</p>"
 )
-'''chart = alt.Chart(data).mark_arc().encode(
+chart = alt.Chart(data).mark_arc().encode(
     theta=alt.Theta(field='sizes', type='quantitative'),
     color=alt.Color(field='labels', type='nominal'),
     tooltip=[alt.Tooltip(field='labels', type='nominal'), alt.Tooltip(field='sizes', type='quantitative')]
@@ -48,28 +44,12 @@ st.html(
 )
 
 
-#st.altair_chart(chart, use_container_width=True)
+st.altair_chart(chart, use_container_width=True)
 
 
-# Display the chart in Streamlit
-st.altair_chart(chart, use_container_width=True)'''
-data['Percent'] = (data['Sizes'] / data['Sizes'].sum() * 100).round(1).astype(str) + '%'
 
-# Create the pie chart using Altair
-pie_chart = alt.Chart(data).mark_arc().encode(
-    theta=alt.Theta(field="Sizes", type="quantitative"),
-    color=alt.Color(field="Labels", type="nominal"),
-    tooltip=['Labels', 'Sizes', 'Percent']
-).properties(
-    title='Maid Room and Driver Room'
-).mark_text(radius=120, size=14).encode(
-    text=alt.Text(field='Percent', type='nominal'),
-    theta=alt.Theta(field='Sizes', type='quantitative')
-)
 
-# Streamlit app
-st.title('Pie Chart with Percentages')
-st.altair_chart(pie_chart, use_container_width=True)
+
 
 st.html(
     "<h1>السؤال الثالث ؟ </h1>"
