@@ -163,20 +163,24 @@ pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
     height=400
 ).configure_arc(
     outerRadius=150
-).mark_text(
-    radius=200,
+)
+
+# Add percentage labels to the pie chart
+text_chart = alt.Chart(duplex_counts).mark_text(
+    radius=160,
     size=14,
     color='black',
     align='center'
 ).encode(
+    theta=alt.Theta(field='count', type='quantitative'),
     text=alt.Text('percentage:Q', format='.1f')
 )
 
+# Combine the arc and text charts
+final_chart = pie_chart + text_chart
+
 # Display the chart using Streamlit
-st.altair_chart(pie_chart, use_container_width=True)
-
-
-
+st.altair_chart(final_chart, use_container_width=True)
 st.html(
     "<h1>السؤال الخامس ؟ </h1>"
     "<p>شرح</p>"
