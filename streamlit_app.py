@@ -339,8 +339,8 @@ donut_chart = alt.Chart(top_10_locations).mark_arc(innerRadius=100).encode(
 
 
 bar_chart = alt.Chart(top_10_locations).mark_bar().encode(
-    x=alt.X('location:N', title='Location', sort='-y'),
-    y=alt.Y('count:Q', title='Count'),
+    x=alt.X('location:N', title='الموقع', sort='-y'),
+    y=alt.Y('count:Q', title='عدد الفلل'),
     color='location:N',
     tooltip=['location:N', 'count:Q']  
 ).properties(
