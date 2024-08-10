@@ -125,7 +125,7 @@ st.html(
     "<h1>السؤال الرابع ؟ </h1>"
     "<p>شرح</p>"
 )
-duplex_counts = df['duplex'].value_counts().reset_index()
+'''duplex_counts = df['duplex'].value_counts().reset_index()
 duplex_counts.columns = ['duplex', 'count']
 pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
     theta=alt.Theta(field='count', type='quantitative', title='Count'),
@@ -138,7 +138,7 @@ pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
 ).configure_arc(
     outerRadius=150
 )
-st.altair_chart(pie_chart, use_container_width=True)
+st.altair_chart(pie_chart, use_container_width=True)'''
 df['duplex'] = df['duplex'].map({0: 'لا', 1: 'نعم'})
 
 # Calculate counts and create a DataFrame for Altair
