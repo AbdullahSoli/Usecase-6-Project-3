@@ -214,8 +214,8 @@ st.altair_chart(pie_chart, use_container_width=True)'''
 
 try:
     # Filter the data based on propertyAge and space
-    property_age_lt_10 = df2[(df2['propertyAge'] < 10) & (df2['space'] <= 500)]
-    property_age_gt_20 = df2[(df2['propertyAge'] > 20) & (df2['space'] <= 500)]
+    property_age_lt_10 = df[(df['propertyAge'] < 10) & (df['space'] <= 500)]
+    property_age_gt_20 = df[(df['propertyAge'] > 20) & (df['space'] <= 500)]
 
     # Get the mean price for each group
     price_lt_10 = property_age_lt_10['price'].mean()
