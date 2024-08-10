@@ -14,7 +14,7 @@ st.html(
     "<p>مقدمة</p>"
 )
 
-st.image("https://github.com/AbdullahSoli/Usecase-6-Project-3/blob/main/Riyadh-City-Skyline.gif)
+st.image("https://github.com/AbdullahSoli/Usecase-6-Project-3/blob/main/Riyadh-City-Skyline.gif")
 #st.video("https://github.com/AbdullahSoli/Usecase-6-Project-3/blob/main/Riyadh%20City%20Skyline.mp4")
 
 
