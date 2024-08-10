@@ -28,13 +28,30 @@ components.html(video_html, height=500)
 
 
 st.html(
-    "<h1>السؤال الاول ؟ </h1>"
+    "<br>"
     "<p>  العديد من الناس يتمنى امتلاك فيلا في الرياض وانا واحد منهم  ولكن هناك عائق كبير وهو في الأسعار المبالغة ، وهي من أكبر المشاكل في الرياض بسبب التطور الكبير مما ادى الى ارتفاع الاسعار لكن لكل مشكلة حل ف قررنا ان نستلم الموضوع بجدية و نحلل لماذا هنالك ارتفاع في الأسعار بشكل كبير.  </p>"
 )
 
+
+
+avg_price_rooms = df.groupby('location')['price'].mean().reset_index()
+
+# Create the Altair bar chart
+chart = alt.Chart(avg_price_rooms).mark_bar().encode(
+    x=alt.X('location:N', title='Location'),
+    y=alt.Y('price:Q', title='Average Price'),
+    tooltip=['location:N', 'price:Q']
+).properties(
+    title='Average Price  by Location'
+).configure_axis(
+    labelAngle=45  # Rotate x-axis labels for better readability
+)
+
+
+
 st.html(
-    "<h1>السؤال الثاني ؟ </h1>"
-    "<p>شرح</p>"
+   "<br>"
+    "<p>لاحظنا أن أكثر الأسعار ارتفاعا في شمال الرياض و وجدنا أن المطار و أكاديمية طويق جامعة الأميرة نورة وجامعة الإمام محمد بن سعود و بوليفارد  الرياض يكون قريب من الشمال مما أدى الى ارتفاع الاسعار بشكل ملحوظ كما نلاحظ في الرسم البياني</p>"
 )
 data = pd.DataFrame({
     'Labels': ['Maid Room', 'Driver Room'],
@@ -86,7 +103,7 @@ chart = alt.Chart(avg_price_rooms).mark_bar().encode(
     y=alt.Y('price:Q', title='Average Price'),
     tooltip=['location:N', 'price:Q']
 ).properties(
-    title='Average Price of Room Objects by Location'
+    title='Average Price  by Location'
 ).configure_axis(
     labelAngle=45  # Rotate x-axis labels for better readability
 )
