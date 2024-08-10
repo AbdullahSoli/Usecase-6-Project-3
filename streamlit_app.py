@@ -53,7 +53,7 @@ st.html(
 
 # Display the chart in Streamlit
 st.altair_chart(chart, use_container_width=True)'''
-df['Percent'] = (df['Sizes'] / df['Sizes'].sum() * 100).round(1).astype(str) + '%'
+data['Percent'] = (data['Sizes'] / data['Sizes'].sum() * 100).round(1).astype(str) + '%'
 
 # Create the pie chart using Altair
 pie_chart = alt.Chart(data).mark_arc().encode(
