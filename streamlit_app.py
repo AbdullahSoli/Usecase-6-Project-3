@@ -51,7 +51,7 @@ arc_chart = alt.Chart(data).mark_arc().encode(
 text_chart = alt.Chart(data).mark_text(
     radius=100,  
     size=14,    
-    dy=-90       
+    dy=-30       
 ).encode(
     theta=alt.Theta(field='Sizes', type='quantitative'),
     text=alt.Text(field='Percent', type='nominal')
