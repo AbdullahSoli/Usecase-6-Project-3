@@ -1,10 +1,6 @@
 # Usecase-6-Project-3
 
-# Due Date: Sun, 11 Aug, 09:00 AM.
-## Final Deliverables:
-- Notebook file(.ipynb).
-- Streamlit file (.py)
-- README.md file (.md).
+---
 
 # Team Members
 * Abduallah
@@ -148,7 +144,6 @@ This indicates that West and East Riyadh are the most populated in terms of hous
 
 The scatter plot shows the relationship between property age and price across different locations in Riyadh:
 
-- There is a wide range of prices for properties of all ages, with no clear trend of prices increasing or decreasing significantly with age.
 - **North Riyadh** (red dots) shows a consistent presence across all age ranges with prices generally on the higher side.
 - **West Riyadh** (light red) also appears frequently across all property ages, with prices similar to those in North Riyadh.
 - **South Riyadh** and **East Riyadh** (blue shades) have properties mostly in the lower price range.
