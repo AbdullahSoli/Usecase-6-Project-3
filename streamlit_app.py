@@ -50,20 +50,21 @@ arc_chart = alt.Chart(data).mark_arc().encode(
     tooltip=[alt.Tooltip(field='Labels', type='nominal'), alt.Tooltip(field='Sizes', type='quantitative'), alt.Tooltip(field='Percent', type='nominal')]
 )
 
-# إنشاء النصوص (النسب المئوية والأسماء) داخل الفطائر
+# إنشاء النصوص (النسب المئوية) داخل الفطائر
 text_chart = alt.Chart(data).mark_text(
-    radius=60,  # تحكم في المسافة من المركز
+    radius=90,  # رفع النصوص بعيداً عن المركز
     size=14,    # حجم النص
-    dy=-10       # المسافة الرأسية لتعديل الموضع
+    dy=-15       # رفع النصوص قليلاً عن الموضع الافتراضي
 ).encode(
     theta=alt.Theta(field='Sizes', type='quantitative'),
     text=alt.Text(field='Percent', type='nominal')
 )
 
+# إنشاء النصوص (الأسماء) داخل الفطائر
 label_chart = alt.Chart(data).mark_text(
-    radius=30,  # تحكم في المسافة من المركز
-    size=14,    # حجم النص
-    dy=20,      # المسافة الرأسية لتعديل الموضع
+    radius=70,  # رفع الأسماء بعيداً عن المركز
+    size=12,    # حجم النص
+    dy=15,      # رفع الأسماء قليلاً
     color='black'  # لون النص
 ).encode(
     theta=alt.Theta(field='Sizes', type='quantitative'),
@@ -75,7 +76,6 @@ chart = arc_chart + text_chart + label_chart
 
 # عرض الرسم البياني
 st.altair_chart(chart, use_container_width=True)
-
 
 
 
