@@ -242,10 +242,10 @@ try:
 
     # Create the Altair bar chart
     bar_chart = alt.Chart(price_data).mark_bar().encode(
-        x=alt.X('عمر الملكية:N', title='Property Age'),
+        x=alt.X('عمر الملكية:N', title='عمر الملكية'),
         y=alt.Y('متوسط السعر:Q', title='Average price'),
         color=alt.Color('عمر الملكية:N', scale=alt.Scale(domain=['أقل من 10 سنوات', 'أكبر من 20 سنة'], range=['#4863A0', '#646D7E'])),
-        tooltip=[alt.Tooltip('عمر الملكية:N', title='Property Age'), alt.Tooltip('متوسط السعر:Q', title='Average price')]
+        tooltip=[alt.Tooltip('عمر الملكية:N', title='عمر الملكية'), alt.Tooltip('متوسط السعر:Q', title='Average price')]
     ).properties(
         title=' مقارنة بين أسعار الفيلل بحسب العمر العقار',
         width=500,
