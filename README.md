@@ -18,3 +18,13 @@ The real estate market in Riyadh is growing rapidly, and with this growth comes 
 
 ## Objectives
 The goal of this project is to analyze Riyadh's real estate data using advanced tools to make sense of it all. We want to answer important questions like what factors affect property prices and what trends are shaping the market. Through careful data analysis and visualization, we aim to uncover insights that will help investors, developers, and policymakers make better decisions. In the end, we'll create an easy-to-understand report that clearly presents our findings in a story-telling format.
+
+## Dataset Overview and Source
+
+### Dataset Source
+The dataset used in this analysis is sourced from the Aqar website and is available on Kaggle.
+
+- **Source:** [Riyadh Housing Data on Kaggle](https://www.kaggle.com/datasets/salmanshir/riyadhhousingdata)
+- **Description:** The dataset contains detailed information about housing in Riyadh, including attributes such as property prices, types, locations, sizes, and other relevant factors.
+
+This dataset will be utilized to perform in-depth analysis and generate insights that can contribute to better decision-making in the Riyadh real estate market.
