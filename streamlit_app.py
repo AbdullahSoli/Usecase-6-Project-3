@@ -125,7 +125,7 @@ st.html(
     "<h1>السؤال الرابع ؟ </h1>"
     "<p>شرح</p>"
 )
-duplex_counts = df['duplex'].value_counts().reset_index()
+'''duplex_counts = df['duplex'].value_counts().reset_index()
 duplex_counts.columns = ['duplex', 'count']
 pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
     theta=alt.Theta(field='count', type='quantitative', title='Count'),
@@ -138,9 +138,58 @@ pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
 ).configure_arc(
     outerRadius=150
 )
-st.altair_chart(pie_chart, use_container_width=True)
+st.altair_chart(pie_chart, use_container_width=True)'''
 
+df['duplex'] = df['duplex'].replace({0: 'No', 1: 'Yes'})
 
+# Calculate counts and percentages
+duplex_counts = df['duplex'].value_counts().reset_index()
+duplex_counts.columns = ['duplex', 'count']
+duplex_counts['Percent'] = (duplex_counts['count'] / duplex_counts['count'].sum() * 100).round(2).astype(str) + '%'
+
+# Create the Altair pie chart
+pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
+    theta=alt.Theta(field='count', type='quantitative', title='Count'),
+    color=alt.Color(field='duplex', type='nominal', title='Duplex'),
+    tooltip=[alt.Tooltip(field='duplex', type='nominal'), alt.Tooltip(field='count', type='quantitative'), alt.Tooltip(field='Percent', type='nominal')]
+).properties(
+    title='Distribution of Duplex Values',
+    width=400,
+    height=400
+).configure_arc(
+    outerRadius=150
+)
+
+# Create the text chart for percentages and labels
+text_chart = alt.Chart(duplex_counts).mark_text(
+    radius=150,  # Distance from the center where the text appears
+    size=14,     # Text size
+    color='black',  # Text color
+    angle=0  # Rotate text if needed
+).encode(
+    theta=alt.Theta(field='count', type='quantitative'),
+    text=alt.Text(field='Percent', type='nominal')
+)
+
+label_chart = alt.Chart(duplex_counts).mark_text(
+    radius=120,  # Distance from the center where the labels appear
+    size=14,     # Text size
+    color='black',  # Text color
+    angle=0  # Rotate text if needed
+).encode(
+    theta=alt.Theta(field='count', type='quantitative'),
+    text=alt.Text(field='duplex', type='nominal')
+)
+
+# Combine the charts using alt.layer()
+combined_pie_chart = alt.layer(
+    pie_chart,
+    text_chart,
+    label_chart
+)
+
+# Display the chart using Streamlit
+st.altair_chart(combined_pie_chart, use_container_width=True)
 
 st.html(
     "<h1>السؤال الخامس ؟ </h1>"
