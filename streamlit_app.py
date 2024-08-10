@@ -130,7 +130,7 @@ st.html(
     "<p>شرح</p>"
 )
 
-duplex_counts = df['duplex'].map({0: 'Villa', 1: 'Duplex'}).value_counts().reset_index()
+duplex_counts = df['duplex'].map({1: 'Villa', 0: 'Duplex'}).value_counts().reset_index()
 duplex_counts.columns = ['duplex', 'count']
 pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
     theta=alt.Theta(field='count', type='quantitative', title='Count'),
@@ -252,17 +252,4 @@ scatter_plot = alt.Chart(df).mark_circle(size=60).encode(
 
 st.altair_chart(scatter_plot, use_container_width=True)
 
-duplex_counts['percent'] = (duplex_counts['count'] / duplex_counts['count'].sum()) * 100
 
-pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
-    theta=alt.Theta(field='count', type='quantitative', title='Count'),
-    color=alt.Color(field='duplex', type='nominal', title='Duplex'),
-    tooltip=['duplex:N', 'count:Q', 'percent:Q'],  # أضف 'percent' إلى tooltip
-    text=alt.Text(field='percent', type='quantitative', format='.1f')  # أضف النص لعرض النسبة
-).properties(
-    title='Distribution of Duplex Values',
-    width=400,
-    height=400
-).interactive()  # أضف التفاعلية
-
-pie_chart
