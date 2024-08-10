@@ -14,17 +14,12 @@ st.html(
     "<p>مقدمة</p>"
 )
 
-#st.image("https://github.com/AbdullahSoli/Usecase-6-Project-3/blob/main/Riyadh-City-Skyline.gif")
-#st.video("https://github.com/AbdullahSoli/Usecase-6-Project-3/blob/main/Riyadh%20City%20Skyline.mp4")
+# Video URL
+video_url = "https://github.com/AbdullahSoli/Usecase-6-Project-3/blob/main/Riyadh%20City%20Skyline.mp4?raw=true"
 
-'''<video controls autoplay>
-  <source src="https://github.com/AbdullahSoli/Usecase-6-Project-3/blob/main/Riyadh%20City%20Skyline.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>'''
-video_file = open("https://github.com/AbdullahSoli/Usecase-6-Project-3/blob/main/Riyadh%20City%20Skyline.mp4", "rb")
-video_bytes = video_file.read()
+# Display the video in Streamlit
+st.video(video_url)
 
-st.video(video_bytes)
 st.html(
     "<h1>السؤال الاول ؟ </h1>"
     "<p>شرح</p>"
