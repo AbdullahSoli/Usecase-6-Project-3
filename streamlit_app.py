@@ -258,7 +258,7 @@ try:
         x=alt.X('عمر الملكية:N', title='عمر الملكية'),
         y=alt.Y('متوسط السعر:Q', title='متوسط السعر'),
         color=alt.Color('عمر الملكية:N', scale=alt.Scale(domain=['أقل من 10 سنوات', 'أكبر من 20 سنة'], range=['#4863A0', '#646D7E'])),
-        tooltip=[alt.Tooltip('عمر الملكية:N', title='عمر الملكية'), alt.Tooltip('متوسط السعر:Q', title='متوسط السعر')]
+        tooltip=[alt.Tooltip('عمر الملكية:N', title='hعمر الملكية'), alt.Tooltip('متوسط السعر:Q', title='متوسط السعر')]
     ).properties(
         title='مقارنة بين أسعار البيوت بحسب العمر',
         width=500,
@@ -314,8 +314,10 @@ st.html(
 
 
 st.html(
-    "<h1>السؤال السادس ؟ </h1>"
-    "<p>شرح</p>"
+    "<br>"
+    "<br>"
+    "<h4>كم عدد الفلل المطروحة في الخمس مناطق ؟ </h4>"
+   
 )
 
 property_counts = df['location'].value_counts().reset_index()
