@@ -40,41 +40,35 @@ data = pd.DataFrame({
     'Sizes': [100, 50]
 })
 
-# حساب النسب المئوية
 data['Percent'] = (data['Sizes'] / data['Sizes'].sum() * 100).round(2).astype(str) + '%'
 
-# إنشاء الرسم البياني
 arc_chart = alt.Chart(data).mark_arc().encode(
     theta=alt.Theta(field='Sizes', type='quantitative'),
     color=alt.Color(field='Labels', type='nominal'),
     tooltip=[alt.Tooltip(field='Labels', type='nominal'), alt.Tooltip(field='Sizes', type='quantitative'), alt.Tooltip(field='Percent', type='nominal')]
 )
 
-# إنشاء النصوص (النسب المئوية) داخل الفطائر
 text_chart = alt.Chart(data).mark_text(
-    radius=100,  # رفع النصوص بعيداً عن المركز
-    size=14,    # حجم النص
-    dy=-30       # رفع النصوص فوق الفطيرة
+    radius=100,  
+    size=14,    
+    dy=-30       
 ).encode(
     theta=alt.Theta(field='Sizes', type='quantitative'),
     text=alt.Text(field='Percent', type='nominal')
 )
 
-# إنشاء النصوص (الأسماء) داخل الفطائر
 label_chart = alt.Chart(data).mark_text(
-    radius=85,  # رفع الأسماء بعيداً عن المركز
-    size=12,    # حجم النص
-    dy=30,      # رفع الأسماء فوق الفطيرة
-    color='black'  # لون النص
+    radius=100,  
+    size=12,    
+    dy=30,      
+    color='black'  
 ).encode(
     theta=alt.Theta(field='Sizes', type='quantitative'),
     text=alt.Text(field='Labels', type='nominal')
 )
 
-# دمج الرسم البيانيين
 chart = arc_chart + text_chart + label_chart
 
-# عرض الرسم البياني
 st.altair_chart(chart, use_container_width=True)
 
 
