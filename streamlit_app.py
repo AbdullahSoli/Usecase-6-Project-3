@@ -146,6 +146,23 @@ bar_chart = alt.Chart(avg_price_5_rooms).mark_bar().encode(
 st.altair_chart(bar_chart, use_container_width=True)
 
 
+
+avg_price_5_rooms = df[df['rooms'] == 5].groupby('location')['price'].mean().reset_index()
+avg_price_5_rooms.columns = ['location', 'average_price']
+bar_chart = alt.Chart(avg_price_5_rooms).mark_bar().encode(
+    x=alt.X('location:N', title='Location', sort='-y'),
+    y=alt.Y('average_price:Q', title='Average Price'),
+    tooltip=['location:N', 'average_price:Q']  
+).properties(
+    title='Average Price for 5 Room Objects by Location',
+    width=800,
+    height=400
+).configure_axis(
+    labelAngle=45  # Rotate x-axis labels for better readability
+)
+st.altair_chart(bar_chart, use_container_width=True)
+
+
 avg_price_4_rooms = df[df['rooms'] == 4].groupby('location')['price'].mean().reset_index()
 avg_price_4_rooms.columns = ['location', 'average_price']
 bar_chart = alt.Chart(avg_price_4_rooms).mark_bar().encode(
