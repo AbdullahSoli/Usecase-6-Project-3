@@ -37,17 +37,20 @@ st.html(
 )
 data = pd.DataFrame({
     'Labels': ['Maid Room', 'Driver Room'],
-    'Sizes': [100, 50]  # Replace these values with df['maidRoom'].sum() and df['driverRoom'].sum()
+    'Sizes': [100, 50]  
 })
+
+# إنشاء الرسم البياني
 chart = alt.Chart(data).mark_arc().encode(
-    theta=alt.Theta(field='sizes', type='quantitative'),
-    color=alt.Color(field='labels', type='nominal'),
-    tooltip=[alt.Tooltip(field='labels', type='nominal'), alt.Tooltip(field='sizes', type='quantitative')]
+    theta=alt.Theta(field='Sizes', type='quantitative'),
+    color=alt.Color(field='Labels', type='nominal'),
+    tooltip=[alt.Tooltip(field='Labels', type='nominal'), alt.Tooltip(field='Sizes', type='quantitative')]
 ).properties(
     title='Maid Room and Driver Room'
 )
-st.altair_chart(chart, use_container_width=True)
 
+# عرض الرسم البياني
+st.altair_chart(chart, use_container_width=True)
 
 
 
