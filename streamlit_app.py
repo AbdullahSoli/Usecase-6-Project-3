@@ -37,7 +37,7 @@ st.html(
 )
 data = pd.DataFrame({
     'Labels': ['Maid Room', 'Driver Room'],
-    'Sizes': [100, 50]  # Replace these values with df2['maidRoom'].sum() and df2['driverRoom'].sum()
+    'Sizes': [100, 50]  # Replace these values with df['maidRoom'].sum() and df['driverRoom'].sum()
 })
 chart = alt.Chart(data).mark_arc().encode(
     theta=alt.Theta(field='sizes', type='quantitative'),
