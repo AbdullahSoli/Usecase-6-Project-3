@@ -330,7 +330,7 @@ donut_chart = alt.Chart(top_10_locations).mark_arc(innerRadius=100).encode(
     color=alt.Color(field='location', type='nominal', title='Location'),
     tooltip=['location:N', 'count:Q']  # عرض التفاصيل عند التفاعل مع القطاعات
 ).properties(
-    title='توزيع المنازل حسب المناطق',
+    title='توزيع الفلل حسب المناطق',
     width=400,
     height=400
 ).configure_arc(
@@ -344,9 +344,9 @@ bar_chart = alt.Chart(top_10_locations).mark_bar().encode(
     color='location:N',
     tooltip=['location:N', 'count:Q']  
 ).properties(
-    title='توزيع المنازل حيب المناطق',
-    width=400,
-    height=300
+    title='توزيع الفلل حيب المناطق',
+    width=500,
+    height=420
 )
 
 
