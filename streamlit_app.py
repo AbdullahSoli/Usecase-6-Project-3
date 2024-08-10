@@ -125,20 +125,7 @@ st.html(
     "<h1>السؤال الرابع ؟ </h1>"
     "<p>شرح</p>"
 )
-duplex_counts = df['duplex'].value_counts().reset_index()
-duplex_counts.columns = ['duplex', 'count']
-pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
-    theta=alt.Theta(field='count', type='quantitative', title='Count'),
-    color=alt.Color(field='duplex', type='nominal', title='Duplex'),
-    tooltip=['duplex:N', 'count:Q']  
-).properties(
-    title='Distribution of Duplex Values',
-    width=400,
-    height=400
-).configure_arc(
-    outerRadius=150
-)
-st.altair_chart(pie_chart, use_container_width=True)
+
 duplex_counts = df['duplex'].map({0: 'No', 1: 'Yes'}).value_counts().reset_index()
 duplex_counts.columns = ['duplex', 'count']
 pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
