@@ -242,10 +242,10 @@ try:
 
     # Create the Altair bar chart
     bar_chart = alt.Chart(price_data).mark_bar().encode(
-        x=alt.X('Property Age:N', title='Property Age'),
-        y=alt.Y('Average price:Q', title='Average price'),
-        color=alt.Color('Property Age:N', scale=alt.Scale(domain=['أقل من 10 سنوات', 'أكبر من 20 سنة'], range=['#4863A0', '#646D7E'])),
-        tooltip=[alt.Tooltip('Property Age:N', title='Property Age'), alt.Tooltip('Average price:Q', title='Average price')]
+        x=alt.X('عمر الملكية:N', title='Property Age'),
+        y=alt.Y('متوسط السعر:Q', title='Average price'),
+        color=alt.Color('عمر الملكية:N', scale=alt.Scale(domain=['أقل من 10 سنوات', 'أكبر من 20 سنة'], range=['#4863A0', '#646D7E'])),
+        tooltip=[alt.Tooltip('عمر الملكية:N', title='Property Age'), alt.Tooltip('متوسط السعر:Q', title='Average price')]
     ).properties(
         title=' مقارنة بين أسعار الفيلل بحسب العمر العقار',
         width=500,
@@ -253,6 +253,19 @@ try:
     ).configure_axis(
     labelAngle=45  # Rotate x-axis labels for better readability
 )
+
+#      bar_chart = alt.Chart(price_data).mark_bar().encode(
+#         x=alt.X('عمر الملكية:N', title='عمر الملكية'),
+#         y=alt.Y('متوسط السعر:Q', title='متوسط السعر'),
+#         color=alt.Color('عمر الملكية:N', scale=alt.Scale(domain=['أقل من 10', 'أكثر من 20'], range=['#4863A0', '#646D7E'])),
+#         tooltip=[alt.Tooltip('عمر الملكية:N', title='عمر الملكية'), alt.Tooltip('متوسط السعر:Q', title='متوسط السعر')]
+#     ).properties(
+#         title='مقارنة بين أسعار البيوت بحسب العمر',
+#         width=500,
+#         height=300
+#     ).configure_axis(
+#     labelAngle=45  # Rotate x-axis labels for better readability
+# )
 
     # Display the chart using Streamlit
     st.altair_chart(bar_chart, use_container_width=True)
