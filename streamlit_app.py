@@ -183,7 +183,9 @@ try:
         title='مقارنة بين أسعار البيوت بحسب العمر',
         width=500,
         height=300
-    )
+    ).configure_axis(
+    labelAngle=45  # Rotate x-axis labels for better readability
+)
 
     # Display the chart using Streamlit
     st.altair_chart(bar_chart, use_container_width=True)
