@@ -152,7 +152,11 @@ duplex_counts['percentage'] = 100 * duplex_counts['count'] / duplex_counts['coun
 pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
     theta=alt.Theta(field='count', type='quantitative', title='Count'),
     color=alt.Color(field='duplex', type='nominal', title='Duplex'),
-    tooltip=[alt.Tooltip('duplex:N', title='Duplex'), alt.Tooltip('count:Q', title='Count'), alt.Tooltip('percentage:Q', format='.1f', title='Percentage')]
+    tooltip=[
+        alt.Tooltip('duplex:N', title='Duplex'),
+        alt.Tooltip('count:Q', title='Count'),
+        alt.Tooltip('percentage:Q', format='.1f', title='Percentage')
+    ]
 ).properties(
     title='Distribution of Duplex Values',
     width=400,
@@ -160,9 +164,10 @@ pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
 ).configure_arc(
     outerRadius=150
 ).mark_text(
-    radius=150,
+    radius=160,
     size=14,
-    angle=0,
+    anchor='middle',
+    fontWeight='bold',
     color='white'
 ).encode(
     text=alt.Text('percentage:Q', format='.1f')
