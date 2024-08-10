@@ -139,7 +139,7 @@ bar_chart = alt.Chart(avg_price_5_rooms).mark_bar().encode(
 ).properties(
     title='Average Price for 5 Room Objects by Location',
     width=800,
-    height=400
+    height=450
 ).configure_axis(
     labelAngle=45  # Rotate x-axis labels for better readability
 )
