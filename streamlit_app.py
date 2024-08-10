@@ -111,9 +111,10 @@ st.html(
 )
 
 st.html(
-    "<h1>السؤال الثالث ؟ </h1>"
-    "<p>شرح</p>"
     "<br>"
+    "<br>"
+    "<p>لنفترض أن نريد نحسب متوسط الفلل ل ٥ و ٤ غرف فكيف يكون الفرق بين كل منطقة عن الأخرى </p>"
+   
 )
 # avg_price_rooms = df.groupby('location')['price'].mean().reset_index()
 
@@ -178,10 +179,16 @@ bar_chart = alt.Chart(avg_price_4_rooms).mark_bar().encode(
 )
 st.altair_chart(bar_chart, use_container_width=True)
 
-
 st.html(
-    "<h1>السؤال الرابع ؟ </h1>"
-    "<p>شرح</p>"
+  
+    "<p>كما نلاحظ أن شمال الرياض تقريبا ضعف شرق الرياض الذي يحتل المركز الثاني   </p>"
+   
+)
+st.html(
+    "<br>"
+    "<br>"
+    "<p>طيب كم نسبة الفيلا الدوبلكس عن غيرها ، طرحنا هذا السؤال بسبب ملاحظاتنا لكثرتها أثناء تجولنا في الأحياء السكنية لماذا هناك الكثير منها  </p>"
+   
 )
 
 duplex_counts = df['duplex'].map({1: 'Villa', 0: 'Duplex'}).value_counts().reset_index()
@@ -200,7 +207,10 @@ pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
 st.altair_chart(pie_chart, use_container_width=True)
 
 
-
+st.html(
+  
+    "<p>وأوضحت بحوثنا إلى أن الفيلا الدوبليكس هي الأكثر بسبب ارتفاع سعر الاراضي مما ادى إلى توجه الناس إلى المساحات الصغيرة.</p>"
+)
 
 st.html(
     "<h1>السؤال الخامس ؟ </h1>"
