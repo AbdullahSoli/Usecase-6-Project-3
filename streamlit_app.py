@@ -406,34 +406,3 @@ st.html(
     "<h2>  sa.aqar.fm    مصدر البيانات </h2>"
 
 )
-df_encoded = pd.get_dummies(df, drop_first=True)
-
-# Calculate correlation between features and 'Price'
-correlation_matrix = df_encoded.corr()
-impact_values = correlation_matrix[['Price']].drop('Price')
-
-# Debugging: Check the content of impact_values
-st.write("Impact Values DataFrame:")
-st.write(impact_values)
-
-# Convert to DataFrame
-impact_values = impact_values.reset_index()
-impact_values.columns = ['Feature', 'Impact on Price']
-
-# Debugging: Check the columns
-st.write("Columns of impact_values:")
-st.write(impact_values.columns)
-
-# Create the heatmap
-heatmap = alt.Chart(impact_values).mark_rect().encode(
-    x=alt.X('Feature:O', title='Feature'),
-    y=alt.Y('Impact on Price:Q', title='Impact on Price'),
-    color=alt.Color('Impact on Price:Q', title='Impact', scale=alt.Scale(scheme='viridis'))
-).properties(
-    width=600,
-    height=300,
-    title='Impact of Features on Price'
-)
-
-# Display the heatmap in Streamlit
-st.altair_chart(heatmap)
