@@ -406,17 +406,26 @@ st.html(
     "<h2>  sa.aqar.fm    مصدر البيانات </h2>"
 
 )
-heatmap_data = pd.DataFrame(df['price'].values.reshape(-1, 1), columns=['price'])
+target_column = 'price'
 
-# Create the heatmap chart
-heatmap = alt.Chart(heatmap_data.reset_index()).mark_rect().encode(
-    x='index:O',
-    y='price:Q',
-    color='Value:Q'
-).properties(
-    width=400,
-    height=200
-)
+# استخراج بيانات العلاقة
+relationships = [col for col in df.columns if col != target_column]
 
-# Display the chart in Streamlit
-st.altair_chart(heatmap, use_container_width=True)
+# إنشاء الرسوم البيانية باستخدام Altair
+charts = []
+for col in relationships:
+    chart = alt.Chart(df).mark_point().encode(
+        x=alt.X(f'{col}:Q', title=col),
+        y=alt.Y(f'{target_column}:Q', title=target_column),
+        tooltip=[col, target_column]
+    ).properties(
+        title=f'Relationship between {col} and {target_column}',
+        width=400,
+        height=300
+    )
+    charts.append(chart)
+
+# دمج الرسوم البيانية وعرضها باستخدام Streamlit
+st.write("## Relationship Plots")
+for chart in charts:
+    st.altair_chart(chart, use_container_width=True)
