@@ -56,11 +56,11 @@ avg_price_rooms = df.groupby('location')['price'].mean().reset_index()
 
 # Create the Altair bar chart
 chart = alt.Chart(avg_price_rooms).mark_bar().encode(
-    x=alt.X('location:N', title='Location'),
-    y=alt.Y('price:Q', title='Average Price'),
+    x=alt.X('location:N', title='المنطقة'),
+    y=alt.Y('price:Q', title='متوسط السعر'),
     tooltip=['location:N', 'price:Q']
 ).properties(
-    title='Average Price  by Location'
+    title='متوسط الاسعار بالنسبة للمنطقة'
 ).configure_axis(
     labelAngle=45  # Rotate x-axis labels for better readability
 )
@@ -156,7 +156,7 @@ bar_chart = alt.Chart(avg_price_5_rooms).mark_bar().encode(
     y=alt.Y('average_price:Q', title='Average Price'),
     tooltip=['location:N', 'average_price:Q']  
 ).properties(
-    title='Average Price for 5 Room Objects by Location',
+    title='متوسط ​​سعر 5 غرف حسب الموقع',
     width=800,
     height=450
 ).configure_axis(
@@ -189,7 +189,7 @@ bar_chart = alt.Chart(avg_price_4_rooms).mark_bar().encode(
     y=alt.Y('average_price:Q', title='Average Price'),
     tooltip=['location:N', 'average_price:Q']  
 ).properties(
-    title='Average Price for 4 Room Objects by Location',
+    title='متوسط ​​سعر 4 غرف حسب الموقع',
     width=800,
     height=400
 ).configure_axis(
@@ -216,7 +216,7 @@ pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
     color=alt.Color(field='duplex', type='nominal', title='Duplex'),
     tooltip=['duplex:N', 'count:Q']
 ).properties(
-    title='Distribution of Duplex Values',
+    title='فلل الدبلكس',
     width=400,
     height=400
 ).configure_arc(
@@ -318,7 +318,7 @@ scatter_plot = alt.Chart(df).mark_circle(size=60).encode(
     color='location:N',
     tooltip=['location:N', 'propertyAge:Q', 'price:Q']
 ).properties(
-    title='Scatter Plot of Property Age vs. Price',
+    title='توزيع الاسعار حسب عمر العقار و السعر لكل منطقة',
     width=800,
     height=400
 )
@@ -346,7 +346,7 @@ top_10_locations = property_counts.head(10)
 donut_chart = alt.Chart(top_10_locations).mark_arc(innerRadius=100).encode(
     theta=alt.Theta(field='count', type='quantitative', title='Count'),
     color=alt.Color(field='location', type='nominal', title='Location'),
-    tooltip=['location:N', 'count:Q']  # عرض التفاصيل عند التفاعل مع القطاعات
+    tooltip=['location:N', 'count:Q']  
 ).properties(
     title='توزيع الفلل حسب المناطق',
     width=400,
