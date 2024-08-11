@@ -406,9 +406,8 @@ st.html(
     "<h2>  sa.aqar.fm    مصدر البيانات </h2>"
 
 )
-df 
-# Melt the DataFrame to long format
-df_melted = df.melt(id_vars='Feature', var_name='price', value_name='Impact')
+
+df_melted = df.melt(id_vars='Feature', var_name='Target', value_name='Impact')
 
 # Create the heatmap
 heatmap = alt.Chart(df_melted).mark_rect().encode(
