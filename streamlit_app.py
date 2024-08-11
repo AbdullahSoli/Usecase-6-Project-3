@@ -8,7 +8,25 @@ import altair as alt
 url ='https://raw.githubusercontent.com/AbdullahSoli/Usecase-6-Project-3/main/cleaned_RiyadhVillasAqar2.csv'
 #df= pd.read_csv('cleaned_RiyadhVillasAqar.csv')
 df= pd.read_csv(url)
+logo_url = 'https://github.com/AbdullahSoli/Usecase-6-Project-3/blob/main/realestate.jpg' 
 
+st.markdown(
+    f"""
+    <style>
+        .logo {{
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 10px;
+            z-index: 1000; 
+        }}
+    </style>
+    <div class="logo">
+        <img src="{logo_url}" width="100" alt="Logo">
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 st.html(
     "<h1>         !! هل امتلاك فيلا في الرياض مستحيل         </h1>"
