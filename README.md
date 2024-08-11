@@ -167,7 +167,7 @@ This suggests that most properties in the dataset have moderate space sizes, wit
 
 
 ### Streamlit Link
- [Strealit Page](https://usecase-6-project-3-7i4wi9s4nprlcclcaky5pr.streamlit.app/).
+ [Strealit Page](https://usecase-6-project-3-omtynklojjtdpnkz6yyudo.streamlit.app/)
 
 
 
