@@ -406,20 +406,18 @@ st.html(
     "<h2>  sa.aqar.fm    مصدر البيانات </h2>"
 
 )
-data = pd.DataFrame({
-    'X': ['A', 'A', 'A', 'B', 'B', 'B'],
-    'Y': ['X', 'Y', 'Z', 'X', 'Y', 'Z'],
-    'Value': [1, 2, 3, 4, 5, 6]
-})
+correlation_matrix = df.corr()
+feature_impact = correlation_matrix[['Price']].drop('Price').reset_index()
+feature_impact.columns = ['Feature', 'Impact on Price']
 
 # Create the heatmap
-heatmap = alt.Chart(data).mark_rect().encode(
-    x='X:O',
-    y='Y:O',
-    color='Value:Q'
+heatmap = alt.Chart(feature_impact).mark_rect().encode(
+    x='Feature:O',
+    y='Impact on Price:Q',
+    color='Impact on Price:Q'
 ).properties(
     width=400,
-    height=300
+    height=200
 )
 
 # Display the heatmap in Streamlit
