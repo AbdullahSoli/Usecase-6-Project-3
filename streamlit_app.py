@@ -408,20 +408,25 @@ st.html(
 )
 df_encoded = pd.get_dummies(df, drop_first=True)
 
-# Calculate correlation between features and the target variable 'Price'
+# حساب تأثير الميزات على المتغير المستهدف 'Price'
 correlation_matrix = df_encoded.corr()
 feature_impact = correlation_matrix[['price']].drop('price').reset_index()
 feature_impact.columns = ['Feature', 'Impact on Price']
 
-# Create the heatmap
+# إعداد البيانات بشكل مناسب لعرضها في الخريطة الحرارية
+feature_impact['Feature'] = feature_impact['Feature'].astype(str)
+feature_impact['Impact on Price'] = feature_impact['Impact on Price'].abs()  # عرض القيم المطلقة للتأثير
+
+# إنشاء الخريطة الحرارية
 heatmap = alt.Chart(feature_impact).mark_rect().encode(
-    x='Feature:O',
-    y='Impact on Price:Q',
-    color='Impact on Price:Q'
+    x=alt.X('Feature:O', title='Feature'),
+    y=alt.Y('Impact on Price:Q', title='Impact on Price'),
+    color=alt.Color('Impact on Price:Q', title='Impact', scale=alt.Scale(scheme='viridis'))
 ).properties(
-    width=1000,
-    height=500
+    width=600,
+    height=300,
+    title='Impact of Features on Price'
 )
 
-# Display the heatmap in Streamlit
+# عرض الخريطة الحرارية في Streamlit
 st.altair_chart(heatmap)
