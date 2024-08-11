@@ -407,18 +407,3 @@ st.html(
 
 )
 
-df_melted = df.melt(id_vars='Feature', var_name='Target', value_name='Impact')
-
-# Create the heatmap
-heatmap = alt.Chart(df_melted).mark_rect().encode(
-    x=alt.X('Feature:O', title='Feature'),
-    y=alt.Y('Target:O', title='Target'),
-    color=alt.Color('Impact:Q', scale=alt.Scale(scheme='viridis'), title='Impact')
-).properties(
-    width=400,
-    height=300
-)
-
-# Display the heatmap in Streamlit
-st.title('Heatmap Example')
-st.altair_chart(heatmap)
