@@ -419,8 +419,8 @@ heatmap = alt.Chart(feature_impact).mark_rect().encode(
     y='Impact on Price:Q',
     color='Impact on Price:Q'
 ).properties(
-    width=400,
-    height=200
+    width=1000,
+    height=500
 )
 
 # Display the heatmap in Streamlit
