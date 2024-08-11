@@ -406,7 +406,10 @@ st.html(
     "<h2>  sa.aqar.fm    مصدر البيانات </h2>"
 
 )
-correlation_matrix = df.corr()
+df_encoded = pd.get_dummies(df, drop_first=True)
+
+# Calculate correlation between features and the target variable 'Price'
+correlation_matrix = df_encoded.corr()
 feature_impact = correlation_matrix[['Price']].drop('Price').reset_index()
 feature_impact.columns = ['Feature', 'Impact on Price']
 
