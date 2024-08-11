@@ -406,22 +406,26 @@ st.html(
     "<h2>  sa.aqar.fm    مصدر البيانات </h2>"
 
 )
-target_column = "price"
+target_column = 'price'
 
-relationships = [col for col in df.columns if col != target_column]
+# استخراج أسماء الأعمدة الأخرى
+features = [col for col in df.columns if col != target_column]
 
+# إنشاء الرسوم البيانية باستخدام Altair
 charts = []
-for col in relationships:
+for feature in features:
     chart = alt.Chart(df).mark_point().encode(
-        x=alt.X(f'{col}:Q', title=col),
+        x=alt.X(f'{feature}:Q', title=feature),
         y=alt.Y(f'{target_column}:Q', title=target_column),
-        tooltip=[col, target_column]
+        tooltip=[feature, target_column]
     ).properties(
-        title=f'Relationship between {col} and {target_column}',
+        title=f'Relationship between {feature} and {target_column}',
         width=400,
         height=300
     )
     charts.append(chart)
+
+# عرض الرسوم البيانية في Streamlit
 st.write("## Relationship Plots")
 for chart in charts:
     st.altair_chart(chart, use_container_width=True)
