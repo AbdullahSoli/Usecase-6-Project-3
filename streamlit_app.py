@@ -3,6 +3,8 @@ import streamlit.components.v1 as components
 import pandas as pd
 import numpy as np
 import altair as alt
+import matplotlib.pyplot as plt
+import seaborn as sns
 #import plotly.figure_factory as ff
 #import matplotlib.pyplot as plt
 url ='https://raw.githubusercontent.com/AbdullahSoli/Usecase-6-Project-3/main/cleaned_RiyadhVillasAqar2.csv'
@@ -414,7 +416,15 @@ sns.heatmap(corr,
 plt.show()
 
 
+plt.figure(figsize=(10, 8))
+sns.heatmap(corr_matrix,
+            annot=True, 
+            cmap='coolwarm',
+            fmt=".2g"
+           )
 
+# Show the plot
+plt.show()
 
 corr_matrix = df.corr(method='pearson')
 
