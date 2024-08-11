@@ -406,3 +406,26 @@ st.html(
     "<h2>  sa.aqar.fm    مصدر البيانات </h2>"
 
 )
+target_column = 'Target'
+
+# حساب معامل الارتباط بين كل عمود والعمود المستهدف
+correlations = df.corr()[[target_column]].sort_values(by=target_column, ascending=False)
+
+# تحويل البيانات إلى تنسيق مناسب للـ heatmap
+heatmap_data = correlations.reset_index()
+heatmap_data.columns = ['Feature', 'Correlation']
+
+# إنشاء الـ heatmap
+heatmap = alt.Chart(heatmap_data).mark_rect().encode(
+    x=alt.X('Feature:O', title='Feature'),
+    y=alt.Y('Correlation:Q', title='Correlation'),
+    color='Correlation:Q',
+    tooltip=['Feature', 'Correlation']
+).properties(
+    title='Impact of Each Feature on Target',
+    width=400,
+    height=200
+)
+
+# عرض الـ heatmap في Streamlit
+st.altair_chart(heatmap, use_container_width=True)
