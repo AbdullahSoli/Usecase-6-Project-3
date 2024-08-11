@@ -45,6 +45,9 @@ Throughout the project, we applied a comprehensive set of Exploratory Data Analy
 
 7. **Accuracy**
 
+### Data Cleaning
+
+
 These steps were crucial in preparing the data for project, allowing us to draw reliable and insightful conclusions about the real estate market in Riyadh.
 
 
