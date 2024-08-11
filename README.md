@@ -149,8 +149,8 @@ The scatter plot shows the relationship between property age and price across di
 This suggests that property prices in Riyadh are influenced more by location than by the age of the property, with North and West Riyadh being more expensive regardless of property age.
 
 
-** Streamlit Link**
- [documentation](https://usecase-6-project-3-7i4wi9s4nprlcclcaky5pr.streamlit.app/).
+### Streamlit Link
+ [Strealit Page](https://usecase-6-project-3-7i4wi9s4nprlcclcaky5pr.streamlit.app/).
 
 
 
