@@ -408,7 +408,6 @@ st.html(
 )
 target_column = 'price'
 
-# استخراج أسماء الأعمدة الأخرى
 features = [col for col in df.columns if col != target_column]
 
 # إنشاء الرسوم البيانية باستخدام Altair
@@ -428,4 +427,7 @@ for feature in features:
 # عرض الرسوم البيانية في Streamlit
 st.write("## Relationship Plots")
 for chart in charts:
-    st.altair_chart(chart, use_container_width=True)
+    try:
+        st.altair_chart(chart, use_container_width=True)
+    except Exception as e:
+        st.write(f"Error displaying chart for {chart.properties['title']}: {e}")
