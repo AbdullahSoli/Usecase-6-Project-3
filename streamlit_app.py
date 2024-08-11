@@ -12,6 +12,18 @@ url ='https://raw.githubusercontent.com/AbdullahSoli/Usecase-6-Project-3/main/cl
 df= pd.read_csv(url)
 logo_url = 'https://github.com/AbdullahSoli/Usecase-6-Project-3/blob/main/realestate.jpg' 
 
+corr_matrix = df.select_dtypes(include=np.number).corr()
+
+plt.figure(figsize=(10, 8))
+sns.heatmap(corr_matrix,
+            annot=True, 
+            cmap='coolwarm',
+            fmt=".2g"
+           )
+
+# Show the plot
+plt.show()
+
 st.markdown(
     f"""
     <style>
