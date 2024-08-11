@@ -411,16 +411,16 @@ df_encoded = pd.get_dummies(df, drop_first=True)
 # حساب تأثير الميزات على المتغير المستهدف 'Price'
 correlation_matrix = df_encoded.corr()
 feature_impact = correlation_matrix[['price']].drop('price').reset_index()
-feature_impact.columns = ['Feature', 'Impact on Price']
+impact_values.columns = ['Feature', 'Impact on Price']
 
-# إعداد البيانات بشكل مناسب لعرضها في الخريطة الحرارية
-feature_impact['Feature'] = feature_impact['Feature'].astype(str)
-feature_impact['Impact on Price'] = feature_impact['Impact on Price'].abs()  # عرض القيم المطلقة للتأثير
+# تحويل البيانات إلى شكل مناسب لخريطة حرارية
+impact_values['Impact on Price'] = impact_values['Impact on Price'].abs()  # استخدام القيم المطلقة للتأثير
+heatmap_data = impact_values
 
 # إنشاء الخريطة الحرارية
-heatmap = alt.Chart(feature_impact).mark_rect().encode(
+heatmap = alt.Chart(heatmap_data).mark_rect().encode(
     x=alt.X('Feature:O', title='Feature'),
-    y=alt.Y('Impact on Price:Q', title='Impact on Price'),
+    y=alt.Y('Impact on Price:Q', title='Impact'),
     color=alt.Color('Impact on Price:Q', title='Impact', scale=alt.Scale(scheme='viridis'))
 ).properties(
     width=600,
