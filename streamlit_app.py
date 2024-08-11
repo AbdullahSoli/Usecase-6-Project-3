@@ -406,22 +406,4 @@ st.html(
     "<h2>  sa.aqar.fm    مصدر البيانات </h2>"
 
 )
-counts = df.groupby(['location', 'neighborhood']).size().reset_index(name='frequency')
 
-# Extract top 3 neighborhoods by frequency for each region
-top_3_neighborhoods = counts.groupby('location').apply(lambda x: x.nlargest(3, 'frequency')).reset_index(drop=True)
-
-# Create the bar chart with Altair
-bar_chart = alt.Chart(top_3_neighborhoods).mark_bar().encode(
-    x=alt.X('frequency:Q', title='Frequency'),
-    y=alt.Y('neighborhood:O', title='Neighborhood', sort='-x'),
-    color=alt.Color('region:N', title='Region'),
-    column=alt.Column('region:N', title='Region')
-).properties(
-    width=300,
-    height=200
-)
-
-# Display the chart with Streamlit
-st.title('Top 3 Neighborhoods by Frequency for Each Region')
-st.altair_chart(bar_chart)
