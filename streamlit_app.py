@@ -399,6 +399,9 @@ st.html(
 #     width=800,
 #     height=400
 # )
+
+corr_matrix = df.select_dtypes(include=np.number).corr()
+
 from scipy.stats import pearsonr# correct if rank decreases the higher the happiness
 
 
