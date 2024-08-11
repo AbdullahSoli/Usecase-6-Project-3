@@ -412,6 +412,18 @@ sns.heatmap(corr,
 plt.show()
 
 
+from scipy.stats import pearsonr# correct if rank decreases the higher the happiness
+
+
+corr_matrix = df.corr(method='pearson')
+
+sns.heatmap(corr_matrix,
+            annot=True, 
+            cmap='Purples',
+            fmt=".1f"
+           )
+
+
 st.html(
     "<br>"
     "<br>"
