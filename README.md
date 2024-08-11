@@ -138,7 +138,6 @@ This indicates that West and East Riyadh are the most populated in terms of hous
 
 ![image](https://github.com/user-attachments/assets/ab9d3650-9be0-4c2c-941e-26d056af54da)
 
-### Insight from the Chart
 
 The scatter plot shows the relationship between property age and price across different locations in Riyadh:
 
@@ -147,6 +146,21 @@ The scatter plot shows the relationship between property age and price across di
 - **South Riyadh** and **East Riyadh** (blue shades) have properties mostly in the lower price range.
 
 This suggests that property prices in Riyadh are influenced more by location than by the age of the property, with North and West Riyadh being more expensive regardless of property age.
+
+---
+
+![image](https://github.com/user-attachments/assets/a5176724-9d03-4f07-961a-77893b1b9df6)
+
+### Insight from the Chart
+
+The histogram with box plot elements shows the distribution of property spaces:
+
+- Most properties have spaces ranging between **200** and **400** square meters, with the highest concentration around **300** square meters.
+- The median space (solid red line) is close to **300** square meters.
+- The first quartile (Q1) and third quartile (Q3) are marked with dashed red lines, indicating that the majority of properties fall within the **200** to **400** square meter range.
+- There are a few properties with much larger spaces, but these are relatively rare, as shown by the lower bars on the right side of the histogram.
+
+This suggests that most properties in the dataset have moderate space sizes, with a few outliers having significantly larger areas.
 
 
 ### Streamlit Link
