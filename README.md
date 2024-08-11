@@ -29,6 +29,8 @@ This dataset will be utilized to perform in-depth analysis and generate insights
 
 Throughout the project, we applied a comprehensive set of Exploratory Data Analysis (EDA) steps to ensure the data's quality and extract meaningful insights. Below is a list of the EDA steps we performed.
 
+### Data Profiling
+
 1. **Reliability**
 
 2. **Timeliness**
@@ -150,8 +152,6 @@ This suggests that property prices in Riyadh are influenced more by location tha
 ---
 
 ![image](https://github.com/user-attachments/assets/a5176724-9d03-4f07-961a-77893b1b9df6)
-
-### Insight from the Chart
 
 The histogram with box plot elements shows the distribution of property spaces:
 
