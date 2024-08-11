@@ -397,6 +397,8 @@ st.html(
 #     width=800,
 #     height=400
 # )
+from scipy.stats import pearsonr# correct if rank decreases the higher the happiness
+
 
 # st.altair_chart(scatter_plot, use_container_width=True)
 
@@ -412,7 +414,6 @@ sns.heatmap(corr,
 plt.show()
 
 
-from scipy.stats import pearsonr# correct if rank decreases the higher the happiness
 
 
 corr_matrix = df.corr(method='pearson')
@@ -422,6 +423,7 @@ sns.heatmap(corr_matrix,
             cmap='Purples',
             fmt=".1f"
            )
+plt.show()
 
 
 st.html(
