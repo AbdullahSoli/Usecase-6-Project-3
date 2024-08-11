@@ -400,7 +400,7 @@ st.html(
 
 # st.altair_chart(scatter_plot, use_container_width=True)
 
-corr = df2.select_dtypes(include=np.number).corr()
+corr = df.select_dtypes(include=np.number).corr()
 
 plt.figure(figsize=(10, 8))
 sns.heatmap(corr,
