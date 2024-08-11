@@ -406,3 +406,17 @@ st.html(
     "<h2>  sa.aqar.fm    مصدر البيانات </h2>"
 
 )
+heatmap_data = pd.DataFrame(df['price'].values.reshape(-1, 1), columns=['price'])
+
+# Create the heatmap chart
+heatmap = alt.Chart(heatmap_data.reset_index()).mark_rect().encode(
+    x='index:O',
+    y='price:Q',
+    color='Value:Q'
+).properties(
+    width=400,
+    height=200
+)
+
+# Display the chart in Streamlit
+st.altair_chart(heatmap, use_container_width=True)
