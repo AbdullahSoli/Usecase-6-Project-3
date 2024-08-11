@@ -408,19 +408,26 @@ st.html(
 )
 df_encoded = pd.get_dummies(df, drop_first=True)
 
-# حساب تأثير الميزات على المتغير المستهدف 'Price'
+# Calculate correlation between features and 'Price'
 correlation_matrix = df_encoded.corr()
-feature_impact = correlation_matrix[['price']].drop('price').reset_index()
+impact_values = correlation_matrix[['Price']].drop('Price')
+
+# Debugging: Check the content of impact_values
+st.write("Impact Values DataFrame:")
+st.write(impact_values)
+
+# Convert to DataFrame
+impact_values = impact_values.reset_index()
 impact_values.columns = ['Feature', 'Impact on Price']
 
-# تحويل البيانات إلى شكل مناسب لخريطة حرارية
-impact_values['Impact on Price'] = impact_values['Impact on Price'].abs()  # استخدام القيم المطلقة للتأثير
-heatmap_data = impact_values
+# Debugging: Check the columns
+st.write("Columns of impact_values:")
+st.write(impact_values.columns)
 
-# إنشاء الخريطة الحرارية
-heatmap = alt.Chart(heatmap_data).mark_rect().encode(
+# Create the heatmap
+heatmap = alt.Chart(impact_values).mark_rect().encode(
     x=alt.X('Feature:O', title='Feature'),
-    y=alt.Y('Impact on Price:Q', title='Impact'),
+    y=alt.Y('Impact on Price:Q', title='Impact on Price'),
     color=alt.Color('Impact on Price:Q', title='Impact', scale=alt.Scale(scheme='viridis'))
 ).properties(
     width=600,
@@ -428,5 +435,5 @@ heatmap = alt.Chart(heatmap_data).mark_rect().encode(
     title='Impact of Features on Price'
 )
 
-# عرض الخريطة الحرارية في Streamlit
+# Display the heatmap in Streamlit
 st.altair_chart(heatmap)
