@@ -413,16 +413,19 @@ features = [col for col in df.columns if col != target_column]
 # إنشاء الرسوم البيانية باستخدام Altair
 charts = []
 for feature in features:
-    chart = alt.Chart(df).mark_point().encode(
-        x=alt.X(f'{feature}:Q', title=feature),
-        y=alt.Y(f'{target_column}:Q', title=target_column),
-        tooltip=[feature, target_column]
-    ).properties(
-        title=f'Relationship between {feature} and {target_column}',
-        width=400,
-        height=300
-    )
-    charts.append(chart)
+    try:
+        chart = alt.Chart(df).mark_point().encode(
+            x=alt.X(f'{feature}:Q', title=feature),
+            y=alt.Y(f'{target_column}:Q', title=target_column),
+            tooltip=[feature, target_column]
+        ).properties(
+            title=f'Relationship between {feature} and {target_column}',
+            width=400,
+            height=300
+        )
+        charts.append(chart)
+    except Exception as e:
+        st.write(f"Error creating chart for {feature}: {e}")
 
 # عرض الرسوم البيانية في Streamlit
 st.write("## Relationship Plots")
@@ -430,4 +433,4 @@ for chart in charts:
     try:
         st.altair_chart(chart, use_container_width=True)
     except Exception as e:
-        st.write(f"Error displaying chart for {chart.properties['title']}: {e}")
+        st.write(f"Error displaying chart: {e}")
