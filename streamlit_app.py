@@ -406,12 +406,10 @@ st.html(
     "<h2>  sa.aqar.fm    مصدر البيانات </h2>"
 
 )
-target_column = 'price'
+target_column = "price"
 
-# استخراج بيانات العلاقة
 relationships = [col for col in df.columns if col != target_column]
 
-# إنشاء الرسوم البيانية باستخدام Altair
 charts = []
 for col in relationships:
     chart = alt.Chart(df).mark_point().encode(
@@ -424,8 +422,6 @@ for col in relationships:
         height=300
     )
     charts.append(chart)
-
-# دمج الرسوم البيانية وعرضها باستخدام Streamlit
 st.write("## Relationship Plots")
 for chart in charts:
     st.altair_chart(chart, use_container_width=True)
