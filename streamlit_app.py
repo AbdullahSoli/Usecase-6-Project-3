@@ -65,6 +65,8 @@ chart = alt.Chart(avg_price_rooms).mark_bar().encode(
     labelAngle=45  # Rotate x-axis labels for better readability
 )
 st.altair_chart(chart, use_container_width=True)
+
+
 st.html(
    "<br>"
     "<p> و هنا رسم بياني يستعرض اكبر العوامل تأثيرا على السعر</p>"
@@ -75,6 +77,7 @@ st.html(
    "<br>"
     "<p>لاحظنا أن أكثر الأسعار ارتفاعا في شمال الرياض و وجدنا أن المطار و أكاديمية طويق جامعة الأميرة نورة وجامعة الإمام محمد بن سعود و بوليفارد  الرياض يكون قريب من الشمال مما أدى الى ارتفاع الاسعار بشكل ملحوظ كما نلاحظ في الرسم البياني</p>"
 )
+
 
 st.html(
    "<br>"
