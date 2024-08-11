@@ -406,7 +406,7 @@ st.html(
     "<h2>  sa.aqar.fm    مصدر البيانات </h2>"
 
 )
-target_column = 'Target'
+target_column = 'price'
 
 # حساب معامل الارتباط بين كل عمود والعمود المستهدف
 correlations = df.corr()[[target_column]].sort_values(by=target_column, ascending=False)
