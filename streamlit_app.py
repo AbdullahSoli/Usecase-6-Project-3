@@ -3,35 +3,12 @@ import streamlit.components.v1 as components
 import pandas as pd
 import numpy as np
 import altair as alt
-import matplotlib.pyplot as plt
-import seaborn as sns
-%matplotlib inline
 #import plotly.figure_factory as ff
 #import matplotlib.pyplot as plt
 url ='https://raw.githubusercontent.com/AbdullahSoli/Usecase-6-Project-3/main/cleaned_RiyadhVillasAqar2.csv'
 #df= pd.read_csv('cleaned_RiyadhVillasAqar.csv')
 df= pd.read_csv(url)
-logo_url = 'https://github.com/AbdullahSoli/Usecase-6-Project-3/blob/main/realestate.jpg' 
 
-
-
-st.markdown(
-    f"""
-    <style>
-        .logo {{
-            position: fixed;
-            top: 0;
-            left: 0;
-            padding: 10px;
-            z-index: 1000; 
-        }}
-    </style>
-    <div class="logo">
-        <img src="{logo_url}" width="100" alt="Logo">
-    </div>
-    """,
-    unsafe_allow_html=True
-)
 
 st.html(
     "<h1>         !! هل امتلاك فيلا في الرياض مستحيل         </h1>"
@@ -61,11 +38,11 @@ avg_price_rooms = df.groupby('location')['price'].mean().reset_index()
 
 # Create the Altair bar chart
 chart = alt.Chart(avg_price_rooms).mark_bar().encode(
-    x=alt.X('location:N', title='المنطقة'),
-    y=alt.Y('price:Q', title='متوسط السعر'),
+    x=alt.X('location:N', title='Location'),
+    y=alt.Y('price:Q', title='Average Price'),
     tooltip=['location:N', 'price:Q']
 ).properties(
-    title='متوسط الاسعار بالنسبة للمنطقة'
+    title='Average Price  by Location'
 ).configure_axis(
     labelAngle=45  # Rotate x-axis labels for better readability
 )
@@ -73,16 +50,9 @@ st.altair_chart(chart, use_container_width=True)
 
 
 st.html(
-   
-    "<p> و هنا رسم بياني يستعرض اكبر العوامل تأثيرا على السعر</p>"
-)
-st.image("https://github.com/AbdullahSoli/Usecase-6-Project-3/blob/main/impact.png",caption="Sunrise by the mountains")
-
-st.html(
    "<br>"
     "<p>لاحظنا أن أكثر الأسعار ارتفاعا في شمال الرياض و وجدنا أن المطار و أكاديمية طويق جامعة الأميرة نورة وجامعة الإمام محمد بن سعود و بوليفارد  الرياض يكون قريب من الشمال مما أدى الى ارتفاع الاسعار بشكل ملحوظ كما نلاحظ في الرسم البياني</p>"
 )
-
 
 st.html(
    "<br>"
@@ -168,7 +138,7 @@ bar_chart = alt.Chart(avg_price_5_rooms).mark_bar().encode(
     y=alt.Y('average_price:Q', title='Average Price'),
     tooltip=['location:N', 'average_price:Q']  
 ).properties(
-    title='متوسط ​​سعر 5 غرف حسب الموقع',
+    title='Average Price for 5 Room Objects by Location',
     width=800,
     height=450
 ).configure_axis(
@@ -201,7 +171,7 @@ bar_chart = alt.Chart(avg_price_4_rooms).mark_bar().encode(
     y=alt.Y('average_price:Q', title='Average Price'),
     tooltip=['location:N', 'average_price:Q']  
 ).properties(
-    title='متوسط ​​سعر 4 غرف حسب الموقع',
+    title='Average Price for 4 Room Objects by Location',
     width=800,
     height=400
 ).configure_axis(
@@ -228,7 +198,7 @@ pie_chart = alt.Chart(duplex_counts).mark_arc().encode(
     color=alt.Color(field='duplex', type='nominal', title='Duplex'),
     tooltip=['duplex:N', 'count:Q']
 ).properties(
-    title='فلل الدبلكس',
+    title='Distribution of Duplex Values',
     width=400,
     height=400
 ).configure_arc(
@@ -330,7 +300,7 @@ scatter_plot = alt.Chart(df).mark_circle(size=60).encode(
     color='location:N',
     tooltip=['location:N', 'propertyAge:Q', 'price:Q']
 ).properties(
-    title='توزيع الاسعار حسب عمر العقار و السعر لكل منطقة',
+    title='Scatter Plot of Property Age vs. Price',
     width=800,
     height=400
 )
@@ -358,7 +328,7 @@ top_10_locations = property_counts.head(10)
 donut_chart = alt.Chart(top_10_locations).mark_arc(innerRadius=100).encode(
     theta=alt.Theta(field='count', type='quantitative', title='Count'),
     color=alt.Color(field='location', type='nominal', title='Location'),
-    tooltip=['location:N', 'count:Q']  
+    tooltip=['location:N', 'count:Q']  # عرض التفاصيل عند التفاعل مع القطاعات
 ).properties(
     title='توزيع الفلل حسب المناطق',
     width=400,
@@ -403,43 +373,7 @@ st.html(
 #     height=400
 # )
 
-corr_matrix = df.select_dtypes(include=np.number).corr()
-
-from scipy.stats import pearsonr# correct if rank decreases the higher the happiness
-
-
 # st.altair_chart(scatter_plot, use_container_width=True)
-
-corr = df.select_dtypes(include=np.number).corr()
-
-plt.figure(figsize=(10, 8))
-sns.heatmap(corr,
-            annot=True, 
-            cmap='coolwarm',
-            fmt=".1f"
-           )
-
-plt.show()
-
-
-plt.figure(figsize=(10, 8))
-sns.heatmap(corr_matrix,
-            annot=True, 
-            cmap='coolwarm',
-            fmt=".2g"
-           )
-
-# Show the plot
-plt.show()
-
-corr_matrix = df.corr(method='pearson')
-
-sns.heatmap(corr_matrix,
-            annot=True, 
-            cmap='Purples',
-            fmt=".1f"
-           )
-plt.show()
 
 
 st.html(
