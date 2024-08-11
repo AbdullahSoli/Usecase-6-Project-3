@@ -5,6 +5,7 @@ import numpy as np
 import altair as alt
 import matplotlib.pyplot as plt
 import seaborn as sns
+%matplotlib inline
 #import plotly.figure_factory as ff
 #import matplotlib.pyplot as plt
 url ='https://raw.githubusercontent.com/AbdullahSoli/Usecase-6-Project-3/main/cleaned_RiyadhVillasAqar2.csv'
