@@ -65,7 +65,11 @@ chart = alt.Chart(avg_price_rooms).mark_bar().encode(
     labelAngle=45  # Rotate x-axis labels for better readability
 )
 st.altair_chart(chart, use_container_width=True)
-
+st.html(
+   "<br>"
+    "<p> و هنا رسم بياني يستعرض اكبر العوامل تأثيرا على السعر</p>"
+)
+st.image("https://github.com/AbdullahSoli/Usecase-6-Project-3/blob/main/impact.png")
 
 st.html(
    "<br>"
